@@ -4,9 +4,7 @@ MonoImporter:
   externalObjects: {}
   serializedVersion: 2
   defaultReferences:
-  - Chaser: {instanceID: 0}
-  - Cube: {instanceID: 0}
-  - chaser: {fileID: 2100000, guid: 3fc3bbc4a9839d24eb455f5e511a1c39, type: 2}
+  - chaser: {fileID: 2100000, guid: c9aa9ee84721eb7408ff140756a7d217, type: 2}
   executionOrder: 0
   icon: {instanceID: 0}
   userData: 
