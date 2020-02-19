@@ -103,7 +103,7 @@ There are 4 branch tiers called: Production, Development, Feature, Bugfix, Refac
 2. Development (called `develop`)
    - Merged from each feature or bugfix branch when completed
 
-3. Feature (called `feature/xxxx`)
+3. Feature (called `feature/xxxx`, `gs/xxxx` or `code/xxxx`)
    - Merges into develop
   
 4. Bugfix (called `bugfix/xxxx`)
