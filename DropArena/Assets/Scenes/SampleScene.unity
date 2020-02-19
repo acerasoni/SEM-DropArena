@@ -246,8 +246,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6303da713595844e6aefb31a4c32c66a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Chaser: {fileID: 333835297}
-  Cube: {fileID: 333835297}
   chaser: {fileID: 2100000, guid: 374f7fc393e611f42b1b1c62a25ad445, type: 2}
 --- !u!114 &333835304
 MonoBehaviour:
@@ -559,7 +557,6 @@ GameObject:
   - component: {fileID: 1615746682}
   - component: {fileID: 1615746681}
   - component: {fileID: 1615746680}
-  - component: {fileID: 1615746679}
   - component: {fileID: 1615746685}
   m_Layer: 0
   m_Name: Player2
@@ -568,21 +565,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &1615746679
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1615746678}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6303da713595844e6aefb31a4c32c66a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  Chaser: {fileID: 1615746678}
-  Cube: {fileID: 1615746678}
-  chaser: {fileID: 2100000, guid: 374f7fc393e611f42b1b1c62a25ad445, type: 2}
 --- !u!54 &1615746680
 Rigidbody:
   m_ObjectHideFlags: 0
