@@ -6,7 +6,7 @@ public class Instantiate : MonoBehaviour
 {
 
     private Material chaser;
-    private const Vector3 Pos = new Vector3(4f, 0.49f, 4f);
+    private Vector3 Pos = new Vector3(4f, 0.49f, 4f);
     // Start is called before the first frame update
     void Start()
     {    
