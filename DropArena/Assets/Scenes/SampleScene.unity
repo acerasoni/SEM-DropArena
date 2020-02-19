@@ -135,6 +135,8 @@ GameObject:
   - component: {fileID: 333835298}
   - component: {fileID: 333835302}
   - component: {fileID: 333835303}
+  - component: {fileID: 333835304}
+  - component: {fileID: 333835305}
   m_Layer: 0
   m_Name: Player1
   m_TagString: chaser
@@ -247,6 +249,34 @@ MonoBehaviour:
   Chaser: {fileID: 333835297}
   Cube: {fileID: 333835297}
   chaser: {fileID: 2100000, guid: 374f7fc393e611f42b1b1c62a25ad445, type: 2}
+--- !u!114 &333835304
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 333835297}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 72b9015bb3e901e42b794e21d6f77569, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Player1: {fileID: 0}
+  Player2: {fileID: 0}
+--- !u!114 &333835305
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 333835297}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 72b9015bb3e901e42b794e21d6f77569, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Player1: {fileID: 333835297}
+  Player2: {fileID: 1615746678}
 --- !u!1 &705507993
 GameObject:
   m_ObjectHideFlags: 0
