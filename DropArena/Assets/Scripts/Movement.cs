@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Movement : MonoBehaviour
 {
-         //Player Objects
+    //Player Objects
      [SerializeField]
      private GameObject Player1;
      [SerializeField]
@@ -18,7 +18,7 @@ public class Movement : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-                 //Check if players are assigned
+        //Check if players are assigned
          if(Player1 && Player2)
          {
              //Processing Player1 input for horizontal 
