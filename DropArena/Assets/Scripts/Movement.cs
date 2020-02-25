@@ -6,9 +6,9 @@ public class Movement : MonoBehaviour
 {
     //Player Objects
      [SerializeField]
-     private GameObject Player1;
+     private GameObject _player1;
      [SerializeField]
-     private GameObject Player2;
+     private GameObject _player2;
     // Start is called before the first frame update
     void Start()
     {
@@ -19,19 +19,19 @@ public class Movement : MonoBehaviour
     void Update()
     {
         //Check if players are assigned
-         if(Player1 && Player2)
+         if(_player1 && _player1)
          {
              //Processing Player1 input for horizontal 
              //This does the trick: Input.GetAxis("HorizontalPlayer1")
-             Player1.transform.position = new Vector3(Player1.transform.position.x + Input.GetAxis("HorizontalPlayer1"), Player1.transform.position.y, Player1.transform.position.z);
+             _player1.transform.position = new Vector3(_player1.transform.position.x + Input.GetAxis("HorizontalPlayer1"), _player1.transform.position.y, _player1.transform.position.z);
              //Processing Player1 input for vertical 
-             Player1.transform.position = new Vector3(Player1.transform.position.x, Player1.transform.position.y, Player1.transform.position.z + Input.GetAxis("VerticalPlayer1"));
+             _player1.transform.position = new Vector3(_player1.transform.position.x, _player1.transform.position.y, _player1.transform.position.z + Input.GetAxis("VerticalPlayer1"));
  
              //Processing Player2 input for horizontal 
              //This does the trick: Input.GetAxis("HorizontalPlayer2")
-             Player2.transform.position = new Vector3(Player2.transform.position.x + Input.GetAxis("HorizontalPlayer2"), Player2.transform.position.y, Player2.transform.position.z);
+             _player2.transform.position = new Vector3(_player2.transform.position.x + Input.GetAxis("HorizontalPlayer2"), _player2.transform.position.y, _player2.transform.position.z);
              //Processing Player2 input for vertical 
-             Player2.transform.position = new Vector3(Player2.transform.position.x, Player2.transform.position.y, Player2.transform.position.z + Input.GetAxis("VerticalPlayer2"));
+             _player2.transform.position = new Vector3(_player2.transform.position.x, _player2.transform.position.y, _player2.transform.position.z + Input.GetAxis("VerticalPlayer2"));
          }
      }
  }
