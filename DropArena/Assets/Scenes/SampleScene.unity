@@ -136,9 +136,8 @@ GameObject:
   - component: {fileID: 333835302}
   - component: {fileID: 333835303}
   - component: {fileID: 333835304}
-  - component: {fileID: 333835305}
   m_Layer: 0
-  m_Name: _player1
+  m_Name: player1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -247,6 +246,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   chaserMaterial: {fileID: 0}
+  chaser: {fileID: 0}
 --- !u!114 &333835304
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -259,22 +259,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 72b9015bb3e901e42b794e21d6f77569, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _player1: {fileID: 0}
-  _player2: {fileID: 0}
---- !u!114 &333835305
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 333835297}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 72b9015bb3e901e42b794e21d6f77569, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _player1: {fileID: 0}
-  _player2: {fileID: 0}
+  player1: {fileID: 333835297}
+  player2: {fileID: 1615746678}
 --- !u!1 &705507993
 GameObject:
   m_ObjectHideFlags: 0
@@ -559,7 +545,7 @@ GameObject:
   - component: {fileID: 1615746680}
   - component: {fileID: 1615746685}
   m_Layer: 0
-  m_Name: _player2
+  m_Name: player2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -649,7 +635,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1615746678}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 8, y: 0.49, z: 8}
+  m_LocalPosition: {x: 7.52, y: 0.49, z: 8}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -667,5 +653,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 72b9015bb3e901e42b794e21d6f77569, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _player1: {fileID: 0}
-  _player2: {fileID: 0}
+  player1: {fileID: 333835297}
+  player2: {fileID: 1615746678}

@@ -13,7 +13,11 @@ public class PlayerMovement : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
+                player1.name = "player1";
+        player1.tag = "player1";
+
+        player2.name = "player2";
+        player2.tag = "player2";
     }
 
     // Update is called once per frame
