@@ -8,7 +8,7 @@ public class level : MonoBehaviour
     public string levelToLoad; 
     // Start is called before the first frame update
     void Start()
-    {
+    {        
         
     }
 
