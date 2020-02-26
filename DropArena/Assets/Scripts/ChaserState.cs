@@ -12,7 +12,7 @@ public enum ChaserStateEnum
 public class ChaserState : MonoBehaviour
 {
 
-    public float movementSpeed = 5.0f;
+    public float movementSpeed = 5f;
     public ChaserStateEnum chaserState;
     private GameObject player1, player2;
     // Start is called before the first frame update
