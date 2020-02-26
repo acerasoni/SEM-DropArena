@@ -17,8 +17,8 @@ public class feature : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        player1 = GameObject.Find("Player1");
-        player2 = GameObject.Find("Player2");
+        player1 = GameObject.Find("_player1");
+        player2 = GameObject.Find("_player2");
         chaserState = new ChaserState();
         chaserState = ChaserState.noChase;
     }
