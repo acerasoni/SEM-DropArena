@@ -20,7 +20,9 @@ public class PlayerGem : MonoBehaviour
         
     }
 
-        void OnCollisionEnter(Collision collision){    	    	
+        void OnCollisionEnter(Collision collision){    	 
+
+            // Check for collision with gem   	
 		 if (collision.gameObject.name == "gem")
 		{
             if(this.name == "_player1"){
@@ -32,6 +34,18 @@ public class PlayerGem : MonoBehaviour
                 moveGem();
             }
 		}
+
+        // Check for collision with chaser
+        if (collision.gameObject.name == "chaser")
+		{
+            if(this.name == "_player1" && _chaser.getChasedPlayer() == ChaserStateEnum.chasePlayer1){
+                Debug.Log("Player2 won.");
+                  Application.LoadLevel("nextlevel");
+             } else if(this.name == "_player2" && _chaser.getChasedPlayer() == ChaserStateEnum.chasePlayer2) {
+                  Debug.Log("Player1 won.");
+  Application.LoadLevel("nextlevel");
+             }
+ 		    }
         }
   	
 	public void retrieveChaser() {

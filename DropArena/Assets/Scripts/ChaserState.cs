@@ -41,4 +41,8 @@ public class ChaserState : MonoBehaviour
     public void setChasedPlayer(ChaserStateEnum state) {
         this.chaserState = state;
     }
+
+    public ChaserStateEnum getChasedPlayer() {
+        return this.chaserState;
+    }
 }
