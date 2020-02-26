@@ -17,6 +17,7 @@ public class Instantiate : MonoBehaviour
         Chaser.tag = "chaser";
         Chaser.GetComponent<Renderer>().material = chaser;
         Rigidbody gameObjectsRigidBody = Chaser.AddComponent<Rigidbody>(); // Add the rigidbody.
+        Chaser.AddComponent<feature>();
         gameObjectsRigidBody.mass = 2; 
     }
 
