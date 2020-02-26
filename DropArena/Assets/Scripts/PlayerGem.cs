@@ -24,11 +24,11 @@ public class PlayerGem : MonoBehaviour
 		 if (collision.gameObject.name == "gem")
 		{
             if(this.name == "_player1"){
-                 _chaser.setChasedPlayer(ChaserStateEnum.chasePlayer1);
+                 _chaser.setChasedPlayer(ChaserStateEnum.chasePlayer2);
                  moveGem();
 
             } else if(this.name == "_player2") {
-                _chaser.setChasedPlayer(ChaserStateEnum.chasePlayer2);
+                _chaser.setChasedPlayer(ChaserStateEnum.chasePlayer1);
                 moveGem();
             }
 		}
