@@ -39,11 +39,9 @@ public class PlayerGem : MonoBehaviour
         if (collision.gameObject.name == "chaser")
 		{
             if(this.name == "_player1" && _chaser.getChasedPlayer() == ChaserStateEnum.chasePlayer1){
-                Debug.Log("Player2 won.");
                   Application.LoadLevel("nextlevel");
              } else if(this.name == "_player2" && _chaser.getChasedPlayer() == ChaserStateEnum.chasePlayer2) {
-                  Debug.Log("Player1 won.");
-  Application.LoadLevel("nextlevel");
+                 Application.LoadLevel("nextlevel");
              }
  		    }
         }
