@@ -29,4 +29,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Venus.unity
     guid: bed8c37b4a9074240ba739d956b08c71
+  - enabled: 1
+    path: Assets/Scenes/End.unity
+    guid: 68c618e2e2ccc5045b8076c4341db91c
   m_configObjects: {}

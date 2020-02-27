@@ -277,8 +277,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 72b9015bb3e901e42b794e21d6f77569, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  player1: {fileID: 0}
-  player2: {fileID: 0}
+  player1: {fileID: 95860552}
+  player2: {fileID: 1640496019}
 --- !u!114 &95860556
 MonoBehaviour:
   m_ObjectHideFlags: 0
