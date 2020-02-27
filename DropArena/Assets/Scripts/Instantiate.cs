@@ -6,6 +6,7 @@ public class Instantiate : MonoBehaviour
 {
 
     public Material chaserMaterial;
+    public Material gemMaterial;
     private Vector3 _chaserPos;
     private Vector3 _gemPos;
     private GameObject _chaser;
@@ -32,7 +33,7 @@ public class Instantiate : MonoBehaviour
 		_gem = GameObject.CreatePrimitive(PrimitiveType.Cube); 
         _gem.transform.position = _gemPos;
 		_gem.name = "gem";
-        _gem.GetComponent<Renderer>().material = chaserMaterial;
+        _gem.GetComponent<Renderer>().material = gemMaterial;
         _gem.transform.localScale = new Vector3(0.25f, 0.25f, 0.25f);
         Rigidbody gemRigidBody = _gem.AddComponent<Rigidbody>(); // Add the rigidbody.
         var gemCollider = _gem.GetComponent<BoxCollider>();
