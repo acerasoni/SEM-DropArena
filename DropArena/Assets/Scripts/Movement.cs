@@ -9,6 +9,7 @@ public class Movement : MonoBehaviour
      public GameObject player1;
      [SerializeField]
      public GameObject player2;
+     level lvl = new level();
 
     // Start is called before the first frame update
     void Start()
@@ -33,6 +34,11 @@ public class Movement : MonoBehaviour
              player2.transform.position = new Vector3(player2.transform.position.x + Input.GetAxis("HorizontalPlayer2") / 4, player2.transform.position.y, player2.transform.position.z);
              //Processing Player2 input for vertical 
              player2.transform.position = new Vector3(player2.transform.position.x, player2.transform.position.y, player2.transform.position.z + Input.GetAxis("VerticalPlayer2") / 4);
+         }
+
+         if (player1.transform.position.y < 0)
+         {
+             lvl.levelloader();
          }
      }
  }
