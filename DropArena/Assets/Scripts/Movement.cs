@@ -10,6 +10,7 @@ public class Movement : MonoBehaviour
      [SerializeField]
      public GameObject player2;
     private float movementSpeed = 10;
+     level lvl = new level();
 
     // Start is called before the first frame update
     void Start()
@@ -33,5 +34,10 @@ public class Movement : MonoBehaviour
             player2.GetComponent<Rigidbody>().AddForce(vector2 * movementSpeed);
 
         }
+
+             if (player1.transform.position.y < 0)
+         {
+             lvl.levelloader();
+         }
      }
  }

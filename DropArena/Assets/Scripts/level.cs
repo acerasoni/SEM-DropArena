@@ -5,7 +5,7 @@ using UnityEngine.SceneManagement;
 
 public class level : MonoBehaviour
 {
-    public string levelToLoad; 
+
     // Start is called before the first frame update
     void Start()
     {        
@@ -15,10 +15,21 @@ public class level : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+
     }
 
-    void levelloader(){
-        SceneManager.LoadScene(levelToLoad);
+   public void levelloader(){
+
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
+
+        int indexCounter = SceneManager.GetActiveScene().buildIndex;
+
+        //works if it is not the last scene, needs playing with
+        if (indexCounter == 8) 
+        {
+            UnityEditor.EditorApplication.isPlaying = false;
+            Application.Quit();
+        }
+
     }
 }
