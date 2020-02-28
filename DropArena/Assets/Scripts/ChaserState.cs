@@ -39,18 +39,18 @@ public class ChaserState : MonoBehaviour
         // Check if close to the edge, in which case give a little nudge inward
         if(chaserBody.position.x < 0.2f) {
             // If on the left edge
-             chaserBody.AddForce(0.2f, 0, 0, ForceMode.Force);
+             chaserBody.AddForce(0.5f, 0, 0, ForceMode.Force);
         } else if(chaserBody.position.x > 3.8f) {
             // If on the right edge
-             chaserBody.AddForce(-0.2f, 0, 0, ForceMode.Force);
+             chaserBody.AddForce(-0.5f, 0, 0, ForceMode.Force);
         }
 
         if(chaserBody.position.y < 0.2f) {
             // If on the bottom edge
-             chaserBody.AddForce(0, 0, 0.2f, ForceMode.Force);
+             chaserBody.AddForce(0, 0, 0.5f, ForceMode.Force);
         } else if(chaserBody.position.y > 3.8f) {
             // If on the top edge
-            chaserBody.AddForce(0, 0, -0.2f, ForceMode.Force);
+            chaserBody.AddForce(0, 0, -0.5f, ForceMode.Force);
         }
     }
 
