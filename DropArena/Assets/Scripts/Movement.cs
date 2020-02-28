@@ -6,9 +6,11 @@ public class Movement : MonoBehaviour
 {
     //Player Objects
      [SerializeField]
-     private GameObject Player1;
+     public GameObject player1;
      [SerializeField]
-     private GameObject Player2;
+     public GameObject player2;
+     level lvl = new level();
+
     // Start is called before the first frame update
     void Start()
     {
@@ -19,19 +21,24 @@ public class Movement : MonoBehaviour
     void Update()
     {
         //Check if players are assigned
-         if(Player1 && Player2)
+         if(player1 && player1)
          {
              //Processing Player1 input for horizontal 
              //This does the trick: Input.GetAxis("HorizontalPlayer1")
-             Player1.transform.position = new Vector3(Player1.transform.position.x + Input.GetAxis("HorizontalPlayer1"), Player1.transform.position.y, Player1.transform.position.z);
+             player1.transform.position = new Vector3(player1.transform.position.x + Input.GetAxis("HorizontalPlayer1") / 4, player1.transform.position.y, player1.transform.position.z);
              //Processing Player1 input for vertical 
-             Player1.transform.position = new Vector3(Player1.transform.position.x, Player1.transform.position.y, Player1.transform.position.z + Input.GetAxis("VerticalPlayer1"));
+             player1.transform.position = new Vector3(player1.transform.position.x, player1.transform.position.y, player1.transform.position.z + Input.GetAxis("VerticalPlayer1") / 4);
  
              //Processing Player2 input for horizontal 
              //This does the trick: Input.GetAxis("HorizontalPlayer2")
-             Player2.transform.position = new Vector3(Player2.transform.position.x + Input.GetAxis("HorizontalPlayer2"), Player2.transform.position.y, Player2.transform.position.z);
+             player2.transform.position = new Vector3(player2.transform.position.x + Input.GetAxis("HorizontalPlayer2") / 4, player2.transform.position.y, player2.transform.position.z);
              //Processing Player2 input for vertical 
-             Player2.transform.position = new Vector3(Player2.transform.position.x, Player2.transform.position.y, Player2.transform.position.z + Input.GetAxis("VerticalPlayer2"));
+             player2.transform.position = new Vector3(player2.transform.position.x, player2.transform.position.y, player2.transform.position.z + Input.GetAxis("VerticalPlayer2") / 4);
+         }
+
+         if (player1.transform.position.y < 0)
+         {
+             lvl.levelloader();
          }
      }
  }
