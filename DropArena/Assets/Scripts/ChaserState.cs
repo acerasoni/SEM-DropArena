@@ -15,6 +15,7 @@ public class ChaserState : MonoBehaviour
     public float movementSpeed = 5f;
     public ChaserStateEnum chaserState;
     private GameObject player1, player2;
+    private Rigidbody chaserBody;
     // Start is called before the first frame update
     void Start()
     {
@@ -22,20 +23,35 @@ public class ChaserState : MonoBehaviour
         player2 = GameObject.Find("_player2");
         chaserState = new ChaserStateEnum();
         chaserState = ChaserStateEnum.noChase;
+        chaserBody = this.GetComponent<Rigidbody>();
     }
 
     // Update is called once per frame
     void Update()
     {
-        
-                // Update chaser according to chaserState
+        // Update chaser according to chaserState
         if (chaserState == ChaserStateEnum.chasePlayer1) {
-            this.GetComponent<Rigidbody>().AddForce((player1.transform.position - this.transform.position).normalized * movementSpeed);
+            chaserBody.AddForce((player1.transform.position - this.transform.position).normalized * movementSpeed);
         } else if (chaserState == ChaserStateEnum.chasePlayer2){
-            this.GetComponent<Rigidbody>().AddForce((player2.transform.position - this.transform.position).normalized * movementSpeed);
+            chaserBody.AddForce((player2.transform.position - this.transform.position).normalized * movementSpeed);
         } 
        
+        // Check if close to the edge, in which case give a little nudge inward
+        if(chaserBody.position.x < 0.2f) {
+            // If on the left edge
+             chaserBody.AddForce(0.2f, 0, 0, ForceMode.Force);
+        } else if(chaserBody.position.x > 3.8f) {
+            // If on the right edge
+             chaserBody.AddForce(-0.2f, 0, 0, ForceMode.Force);
+        }
 
+        if(chaserBody.position.y < 0.2f) {
+            // If on the bottom edge
+             chaserBody.AddForce(0, 0, 0.2f, ForceMode.Force);
+        } else if(chaserBody.position.y > 3.8f) {
+            // If on the top edge
+            chaserBody.AddForce(0, 0, -0.2f, ForceMode.Force);
+        }
     }
 
     public void setChasedPlayer(ChaserStateEnum state) {
