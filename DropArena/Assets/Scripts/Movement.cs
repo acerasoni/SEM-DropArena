@@ -40,5 +40,10 @@ public class Movement : MonoBehaviour
          {
              lvl.levelloader();
          }
+
+        if (player2.transform.position.y < 0)
+         {
+             lvl.levelloader();
+         }
      }
  }
