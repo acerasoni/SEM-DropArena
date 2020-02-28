@@ -9,7 +9,6 @@ public class Movement : MonoBehaviour
      public GameObject player1;
      [SerializeField]
      public GameObject player2;
-    private float movementSpeed = 10;
      level lvl = new level();
 
     // Start is called before the first frame update
@@ -22,20 +21,22 @@ public class Movement : MonoBehaviour
     void Update()
     {
         //Check if players are assigned
-         if(player1 && player2)
+         if(player1 && player1)
          {
-            //Processing Player1 input for horizontal 
-            //This does the trick: Input.GetAxis("HorizontalPlayer1")
-            //Input.GetAxis("HorizontalPlayer1")
-            Vector3 vector1 = new Vector3(Input.GetAxis("HorizontalPlayer1"), 0, Input.GetAxis("VerticalPlayer1"));
-            player1.GetComponent<Rigidbody>().AddForce(vector1 * movementSpeed);
+             //Processing Player1 input for horizontal 
+             //This does the trick: Input.GetAxis("HorizontalPlayer1")
+             player1.transform.position = new Vector3(player1.transform.position.x + Input.GetAxis("HorizontalPlayer1") / 4, player1.transform.position.y, player1.transform.position.z);
+             //Processing Player1 input for vertical 
+             player1.transform.position = new Vector3(player1.transform.position.x, player1.transform.position.y, player1.transform.position.z + Input.GetAxis("VerticalPlayer1") / 4);
+ 
+             //Processing Player2 input for horizontal 
+             //This does the trick: Input.GetAxis("HorizontalPlayer2")
+             player2.transform.position = new Vector3(player2.transform.position.x + Input.GetAxis("HorizontalPlayer2") / 4, player2.transform.position.y, player2.transform.position.z);
+             //Processing Player2 input for vertical 
+             player2.transform.position = new Vector3(player2.transform.position.x, player2.transform.position.y, player2.transform.position.z + Input.GetAxis("VerticalPlayer2") / 4);
+         }
 
-            Vector3 vector2 = new Vector3(Input.GetAxis("HorizontalPlayer2"), 0, Input.GetAxis("VerticalPlayer2"));
-            player2.GetComponent<Rigidbody>().AddForce(vector2 * movementSpeed);
-
-        }
-
-             if (player1.transform.position.y < 0)
+         if (player1.transform.position.y < 0)
          {
              lvl.levelloader();
          }
