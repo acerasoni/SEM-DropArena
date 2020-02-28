@@ -45,10 +45,10 @@ public class ChaserState : MonoBehaviour
              chaserBody.AddForce(-0.5f, 0, 0, ForceMode.Force);
         }
 
-        if(chaserBody.position.y < 0.2f) {
+        if(chaserBody.position.z < 0.2f) {
             // If on the bottom edge
              chaserBody.AddForce(0, 0, 0.5f, ForceMode.Force);
-        } else if(chaserBody.position.y > 3.8f) {
+        } else if(chaserBody.position.z > 3.8f) {
             // If on the top edge
             chaserBody.AddForce(0, 0, -0.5f, ForceMode.Force);
         }
