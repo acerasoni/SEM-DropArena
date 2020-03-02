@@ -136,6 +136,7 @@ GameObject:
   - component: {fileID: 207172786}
   - component: {fileID: 207172785}
   - component: {fileID: 207172784}
+  - component: {fileID: 207172791}
   m_Layer: 0
   m_Name: _player2
   m_TagString: Untagged
@@ -169,6 +170,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   player1: {fileID: 1217078543}
   player2: {fileID: 207172783}
+  movementBonusPlayer1: 0
+  movementBonusPlayer2: 0
+  freezePlayer1: 0
+  freezePlayer2: 0
+  nudgeBonusPlayer1: 0
+  nudgeBonusPlayer2: 0
 --- !u!54 &207172786
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -259,6 +266,18 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &207172791
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 207172783}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3aa46e0ba55963b428a440c785770429, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &267108547
 GameObject:
   m_ObjectHideFlags: 0
@@ -1011,8 +1030,9 @@ GameObject:
   - component: {fileID: 1217078548}
   - component: {fileID: 1217078547}
   - component: {fileID: 1217078546}
-  - component: {fileID: 1217078545}
   - component: {fileID: 1217078544}
+  - component: {fileID: 1217078553}
+  - component: {fileID: 1217078545}
   m_Layer: 0
   m_Name: _player1
   m_TagString: Untagged
@@ -1041,11 +1061,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 1217078543}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 72b9015bb3e901e42b794e21d6f77569, type: 3}
+  m_Script: {fileID: 11500000, guid: fcf376abd158be1469df15cffcf91476, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  player1: {fileID: 1217078543}
-  player2: {fileID: 207172783}
+  positiveMaterial: {fileID: 2100000, guid: b6b38651dac2d304d991f6dd002ff43b, type: 2}
+  negativeMaterial: {fileID: 2100000, guid: a1c93859a9cdff04283828955497b5d1, type: 2}
 --- !u!114 &1217078546
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1060,6 +1080,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   player1: {fileID: 1217078543}
   player2: {fileID: 207172783}
+  movementBonusPlayer1: 0
+  movementBonusPlayer2: 0
+  freezePlayer1: 0
+  freezePlayer2: 0
+  nudgeBonusPlayer1: 0
+  nudgeBonusPlayer2: 0
 --- !u!114 &1217078547
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1164,6 +1190,18 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1217078553
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1217078543}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3aa46e0ba55963b428a440c785770429, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!64 &1428012045
 MeshCollider:
   m_ObjectHideFlags: 0

@@ -24,6 +24,7 @@ public class Instantiate : MonoBehaviour
         Rigidbody chaserRigidBody = _chaser.AddComponent<Rigidbody>(); // Add the rigidbody.
         _chaser.AddComponent<ChaserState>();
         chaserRigidBody.mass = 2; 
+        _chaser.transform.localScale += new Vector3(-0.5f, -0.5f, -0.5f);
 
         // Retrieve chaser in player scripts. This is because chaser doesn't exist until this point.
         GameObject.Find("_player1").GetComponent<PlayerGem>().retrieveChaser();
