@@ -19,8 +19,6 @@ public class InstantiatePowerups : MonoBehaviour
     // Current time
     private float _time;
 
-    private boolean doesPowerupExist;
-
     // Positive powerups
     public GameObject sizePowerup;
     public GameObject speedPowerup;
@@ -36,18 +34,27 @@ public class InstantiatePowerups : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        time = 0.0f;
+        time = time.Time;
         generatePowerup();
     }
 
     // Update is called once per frame
     void Update()
     {
-        time += Time.deltaTime;
-        if(
+        // Every 5 seconds, spawn a new powerup
+        // Destroy previous one if it exists
+        if(Time.time >= time + 5f){
+            disposePowerup();
+            generatePowerup();
+            time = Time.time;
+        }   
     }
 
     private void generatePowerup() {
+
+    }
+
+    private void disposePowerup() {
 
     }
 }
