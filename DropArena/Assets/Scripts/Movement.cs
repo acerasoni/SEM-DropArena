@@ -10,11 +10,26 @@ public class Movement : MonoBehaviour
      [SerializeField]
      public GameObject player2;
      level lvl = new level();
+     public float movementBonusPlayer1;
+     public float movementBonusPlayer2;
+
+     public bool freezePlayer1;
+     public bool freezePlayer2;
+
+     public float nudgeBonusPlayer1;
+     public float nudgeBonusPlayer2;
 
     // Start is called before the first frame update
     void Start()
     {
-        
+        movementBonusPlayer1 = 1;
+           movementBonusPlayer2 = 1;
+
+           freezePlayer1 = false;
+           freezePlayer2 = false;
+
+           nudgeBonusPlayer1 = 0;
+           nudgeBonusPlayer2 = 0;
     }
 
     // Update is called once per frame
@@ -26,14 +41,17 @@ public class Movement : MonoBehaviour
              Rigidbody player1Body = player1.GetComponent<Rigidbody>();
              Rigidbody player2Body = player2.GetComponent<Rigidbody>();
                
-               //Processing Player1 input for horizontal 
-            //This does the trick: Input.GetAxis("HorizontalPlayer1")
-            //Input.GetAxis("HorizontalPlayer1")
-            player1Body.AddForce(Input.GetAxis("HorizontalPlayer1") * 12, 0, Input.GetAxis("VerticalPlayer1") * 12, ForceMode.Acceleration);
-            player2Body.AddForce(Input.GetAxis("HorizontalPlayer2") * 12, 0, Input.GetAxis("VerticalPlayer2") * 12, ForceMode.Acceleration);
-
-            nudgePlayer(player1Body);
-         nudgePlayer(player2Body);
+            if(!freezePlayer1) {
+                 player1Body.AddForce(Input.GetAxis("HorizontalPlayer1") * 12 * movementBonusPlayer1, 0, 
+                 Input.GetAxis("VerticalPlayer1") * 12 * movementBonusPlayer1, ForceMode.Acceleration);
+            } 
+            if(!freezePlayer2) {
+                 player2Body.AddForce(Input.GetAxis("HorizontalPlayer2") * 12 * movementBonusPlayer2, 0, 
+                 Input.GetAxis("VerticalPlayer2") * 12 * movementBonusPlayer2, ForceMode.Acceleration);
+            }
+        
+            nudgePlayer(player1Body, nudgeBonusPlayer1);
+            nudgePlayer(player2Body, nudgeBonusPlayer2);
          }
 
          if (player1.transform.position.y < 0)
@@ -47,22 +65,22 @@ public class Movement : MonoBehaviour
          }
      }
 
-     void nudgePlayer(Rigidbody playerBody) {
+     void nudgePlayer(Rigidbody playerBody, float nudgeBonus) {
           // Check if close to the edge, in which case give a little nudge inward
         if(playerBody.position.x < 0.1f) {
             // If on the left edge
-             playerBody.AddForce(0.2f, 0, 0, ForceMode.Force);
+             playerBody.AddForce(0.04f + nudgeBonus, 0, 0, ForceMode.Force);
         } else if(playerBody.position.x > 3.9f) {
             // If on the right edge
-             playerBody.AddForce(-0.2f, 0, 0, ForceMode.Force);
+             playerBody.AddForce(-0.04f - nudgeBonus, 0, 0, ForceMode.Force);
         }
 
         if(playerBody.position.z < 0.1f) {
             // If on the bottom edge
-             playerBody.AddForce(0, 0, 0.2f, ForceMode.Force);
+             playerBody.AddForce(0, 0, 0.04f + nudgeBonus, ForceMode.Force);
         } else if(playerBody.position.z > 3.9f) {
             // If on the top edge
-            playerBody.AddForce(0, 0, -0.2f, ForceMode.Force);
+            playerBody.AddForce(0, 0, -0.04f - nudgeBonus, ForceMode.Force);
         }
      }
  }
