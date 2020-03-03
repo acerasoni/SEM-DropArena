@@ -25,15 +25,12 @@ public class InstantiateGem : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
-    }
+          if(this.transform.position.y > 0.51f) {
+           generateNewPosition();
+        }
+         
 
-        void OnCollisionEnter(Collision collision){    	 
-    
-            if(isCollidingWithColumn(collision)) {
-                generateNewPosition();
-            }
-         }
+    }
 
     public void generateNewPosition() {
         
@@ -41,18 +38,14 @@ public class InstantiateGem : MonoBehaviour
             this.transform.position = position;
     } 
 
-    private bool isCollidingWithColumn(Collision collision) {
+    private bool isNotInPosition() {
         
-        switch(collision.gameObject.name) {
-            case  "_player1": 
-            case  "_player2": 
-            case  "chaser": 
-            case  "_powerup": 
-            case  "Arena": 
-            return false;
+        // Checking if the gem is higher than 0.51 because we spawn it at exactly 0.5 - meaning something must have pushed it up (i.e. spawning on a column)
+        if(this.transform.position.y > 0.51f) {
+            Debug.Log("Yas");
+            return true;
         }
-
-        return true;
+            else return false;
 
     } 
 
@@ -70,19 +63,19 @@ public class InstantiateGem : MonoBehaviour
             // Determine left or right
             if(rand.NextDouble() >= 0.5){
                 // Left
-                gPos = new Vector3(-0.5f, 0.49f, rFloat);
+                gPos = new Vector3(-0.25f, 0.5f, rFloat);
             } else {
                 // Right
-                gPos = new Vector3(8.5f, 0.49f, rFloat);
+                gPos = new Vector3(8.25f,  0.5f, rFloat);
             }
         } else {
             // Determine top or bottom
             if(rand.NextDouble() >= 0.5) {
                 // Top
-                 gPos = new Vector3(rFloat, 0.49f, 8.5f);
+                 gPos = new Vector3(rFloat,  0.5f, 8.25f);
             } else {
                 // Bottom
-                 gPos = new Vector3(rFloat, 0.49f, -0.5f);
+                 gPos = new Vector3(rFloat,  0.5f, -0.25f);
             }
         }
         
