@@ -9,7 +9,7 @@ public class PowerupCollision : MonoBehaviour
     private float _powerUpDuration;
     private int _currentPowerup;
     private bool _isPoweredUp;
-    
+  
     Text powerup;
 
     // Start is called before the first frame update
@@ -25,6 +25,7 @@ public class PowerupCollision : MonoBehaviour
         if(Time.time >= _powerUpDuration + 5.0f && _isPoweredUp) {
             _isPoweredUp = false;
             resetPlayer();
+            powerup.text = "";
         } 
     }
 
