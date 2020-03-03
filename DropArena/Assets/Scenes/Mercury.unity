@@ -746,7 +746,7 @@ GameObject:
   - component: {fileID: 891283515}
   - component: {fileID: 891283514}
   m_Layer: 0
-  m_Name: Base
+  m_Name: Arena
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

@@ -30,13 +30,14 @@ public class Instantiate : MonoBehaviour
         GameObject.Find("_player1").GetComponent<PlayerGem>().retrieveChaser();
         GameObject.Find("_player2").GetComponent<PlayerGem>().retrieveChaser();
 
-        _gem.AddComponent<InstantiateGem>();
+     
 		_gem = GameObject.CreatePrimitive(PrimitiveType.Cube); 
 		_gem.name = "gem";
         _gem.GetComponent<Renderer>().material = gemMaterial;
         _gem.transform.localScale = new Vector3(0.25f, 0.25f, 0.25f);
         Rigidbody gemRigidBody = _gem.AddComponent<Rigidbody>(); // Add the rigidbody.
-        var gemCollider = _gem.GetComponent<BoxCollider>();
+        var gemCollider = _gem.GetComponent<BoxCollider>();  
+        _gem.AddComponent<InstantiateGem>();
         gemCollider.size = new Vector3(0.25f, 0.25f, 0.25f);
         gemRigidBody.mass = 2; 
     }

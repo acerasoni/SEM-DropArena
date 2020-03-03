@@ -1200,7 +1200,7 @@ GameObject:
   - component: {fileID: 1859134577}
   - component: {fileID: 1859134576}
   m_Layer: 0
-  m_Name: Base
+  m_Name: Arena
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
