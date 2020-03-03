@@ -5,12 +5,21 @@ using UnityEngine;
 public class InstantiateGem : MonoBehaviour
 {
 
+    public Material gemMaterial;
+
     // Start is called before the first frame update
     void Start()
     {
-          // Step 1 - create position
-            Vector3 position = generateRandomPosition();
-            this.transform.position = position;
+        generateNewPosition();
+
+		this.name = "gem";
+        this.GetComponent<Renderer>().material = gemMaterial;
+        this.transform.localScale = new Vector3(0.25f, 0.25f, 0.25f);
+        Rigidbody gemRigidBody = this.gameObject.AddComponent<Rigidbody>(); // Add the rigidbody.
+        var gemCollider = this.gameObject.GetComponent<BoxCollider>();  
+
+        gemCollider.size = new Vector3(0.25f, 0.25f, 0.25f);
+        gemRigidBody.mass = 2; 
     }
 
     // Update is called once per frame
@@ -20,16 +29,16 @@ public class InstantiateGem : MonoBehaviour
     }
 
         void OnCollisionEnter(Collision collision){    	 
-            // Step 3 - move the gem
-            generateValidPosition(collision);
+    
+            if(isCollidingWithColumn(collision)) {
+                generateNewPosition();
+            }
          }
 
-    public void generateValidPosition(Collision collision) {
-            // Step 2 - check if there is collision
-            while(isCollidingWithColumn(collision)) {
-                Vector3 position = generateRandomPosition();
-                this.transform.position = position;
-            }
+    public void generateNewPosition() {
+        
+            Vector3 position = generateRandomPosition();
+            this.transform.position = position;
     } 
 
     private bool isCollidingWithColumn(Collision collision) {
@@ -53,7 +62,7 @@ public class InstantiateGem : MonoBehaviour
         Vector3 gPos;
 
         System.Random rand = new System.Random();
-        int range = 4;
+        float range = 8.5f;
         float rFloat = (float) (rand.NextDouble()* range);
 
         // Determine axis
@@ -61,7 +70,7 @@ public class InstantiateGem : MonoBehaviour
             // Determine left or right
             if(rand.NextDouble() >= 0.5){
                 // Left
-                gPos = new Vector3(0f, 0.49f, rFloat);
+                gPos = new Vector3(-0.5f, 0.49f, rFloat);
             } else {
                 // Right
                 gPos = new Vector3(8.5f, 0.49f, rFloat);
@@ -73,7 +82,7 @@ public class InstantiateGem : MonoBehaviour
                  gPos = new Vector3(rFloat, 0.49f, 8.5f);
             } else {
                 // Bottom
-                 gPos = new Vector3(rFloat, 0.49f, 0f);
+                 gPos = new Vector3(rFloat, 0.49f, -0.5f);
             }
         }
         
