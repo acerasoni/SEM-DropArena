@@ -49,12 +49,11 @@ public class PowerupCollision : MonoBehaviour
 
             case (int) InstantiatePowerups.PowerUps.sizePowerup:   
                 if(this.name == "_player1") {
-                  player1.transform.localScale += new Vector3(0.5f, 0.5f, 0.5f);
                   powerup.text="Player 1 Size PowerUp";
                 } else {
-                  player1.transform.localScale += new Vector3(0.5f, 0.5f, 0.5f);
                   powerup.text="Player 2 Size PowerUp";
-                  }
+                  }     
+                  this.transform.localScale += new Vector3(0.5f, 0.5f, 0.5f);
                 break;
 
 
@@ -63,7 +62,7 @@ public class PowerupCollision : MonoBehaviour
                     player1.GetComponent<Movement>().movementBonusPlayer1 = 1.5f;
                     powerup.text="Player 1 Speed Power Up";
                   } else {
-                    player1.GetComponent<Movement>().movementBonusPlayer1 = 1.5f;
+                    player1.GetComponent<Movement>().movementBonusPlayer2 = 1.5f;
                     powerup.text="Player 2 Speed Power Up";
                   }
                   break;
@@ -71,12 +70,11 @@ public class PowerupCollision : MonoBehaviour
 
             case (int) InstantiatePowerups.PowerUps.massPowerup: 
                   if(this.name == "_player1") {
-                  player1.GetComponent<Rigidbody>().mass += 0.6f;  
                   powerup.text="Player 1 Mass Power Up";  
                   } else {
-                  player1.GetComponent<Rigidbody>().mass += 0.6f;  
                   powerup.text="Player 2 Mass Power Up";
-                  }
+                  }  
+                  this.GetComponent<Rigidbody>().mass += 0.6f;  
                   break;
 
 
@@ -93,12 +91,11 @@ public class PowerupCollision : MonoBehaviour
 
             case (int) InstantiatePowerups.PowerUps.sizePowerdown: 
             if(this.name == "_player1") {
-                    player1.transform.localScale += new Vector3(-0.5f, -0.5f, -0.5f);
                     powerup.text="Player 1 Size Power Down";
                   } else {
-                    player1.transform.localScale += new Vector3(-0.5f, -0.5f, -0.5f);
                     powerup.text="Player 2 Size Power Down";
                   }
+                  this.transform.localScale += new Vector3(-0.5f, -0.5f, -0.5f);
                   break;
 
 
@@ -107,20 +104,19 @@ public class PowerupCollision : MonoBehaviour
                     player1.GetComponent<Movement>().movementBonusPlayer1 = 0.5f;
                     powerup.text="Player 1 Speed Power Up";
                   } else {
-                    player1.GetComponent<Movement>().movementBonusPlayer1 = 0.5f;
+                    player1.GetComponent<Movement>().movementBonusPlayer2 = 0.5f;
                     powerup.text="Player 2 Speed Power Up";
                   }
                   break;
 
 
             case (int) InstantiatePowerups.PowerUps.massPowerdown: 
-             if(this.name == "_player1") {            
-                  player1.GetComponent<Rigidbody>().mass -= 0.6f;  
+             if(this.name == "_player1") {           
                   powerup.text="Player 1 Mass Power Down";
-                } else {
-                  player1.GetComponent<Rigidbody>().mass -= 0.6f;  
+                } else { 
                   powerup.text="Player 2 Mass Power Down";
                 }
+                   this.GetComponent<Rigidbody>().mass -= 0.6f;  
                 break;
 
 
