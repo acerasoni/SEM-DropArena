@@ -28,11 +28,11 @@ public class PlayerGem : MonoBehaviour
 		{
             if(this.name == "_player1"){
                  _chaser.setChasedPlayer(ChaserStateEnum.chasePlayer2);
-                 moveGem();
+                 moveGem(collision);
 
             } else if(this.name == "_player2") {
                 _chaser.setChasedPlayer(ChaserStateEnum.chasePlayer1);
-                moveGem();
+                moveGem(collision);
             }
 		}
 
@@ -54,11 +54,8 @@ public class PlayerGem : MonoBehaviour
           _chaser = GameObject.Find("chaser").GetComponent<ChaserState>();
     }
 
-    private void moveGem() {
-            Instantiate script = GameObject.Find("_player1").GetComponent<Instantiate>();
-            Vector3 newGemPos = script.generateRandomPosition();
-
-            GameObject gem = GameObject.Find("gem");
-            gem.transform.position = newGemPos;
+    private void moveGem(Collision collision) {
+            InstantiateGem script = GameObject.Find("gem").GetComponent<InstantiateGem>();
+            script.generateNewPosition();
     }
 }
