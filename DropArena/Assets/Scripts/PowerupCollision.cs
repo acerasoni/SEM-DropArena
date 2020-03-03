@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class PowerupCollision : MonoBehaviour
 {
@@ -8,6 +9,8 @@ public class PowerupCollision : MonoBehaviour
     private float _powerUpDuration;
     private int _currentPowerup;
     private bool _isPoweredUp;
+    
+    Text powerup;
 
     // Start is called before the first frame update
     void Start()
@@ -25,7 +28,8 @@ public class PowerupCollision : MonoBehaviour
         } 
     }
 
-    void OnCollisionEnter(Collision collision){    	 
+    void OnCollisionEnter(Collision collision){   
+        powerup = GameObject.Find("Text").GetComponent<Text>();
 
         GameObject player1 = GameObject.Find("_player1");
 
@@ -44,57 +48,89 @@ public class PowerupCollision : MonoBehaviour
             switch(_currentPowerup) {
 
             case (int) InstantiatePowerups.PowerUps.sizePowerup:   
-                this.transform.localScale += new Vector3(0.5f, 0.5f, 0.5f);
+                if(this.name == "_player1") {
+                  player1.transform.localScale += new Vector3(0.5f, 0.5f, 0.5f);
+                  powerup.text="Player 1 Size PowerUp";
+                } else {
+                  player1.transform.localScale += new Vector3(0.5f, 0.5f, 0.5f);
+                  powerup.text="Player 2 Size PowerUp";
+                  }
                 break;
 
 
             case (int) InstantiatePowerups.PowerUps.speedPowerup:       
                   if(this.name == "_player1") {
                     player1.GetComponent<Movement>().movementBonusPlayer1 = 1.5f;
+                    powerup.text="Player 1 Speed Power Up";
                   } else {
                     player1.GetComponent<Movement>().movementBonusPlayer1 = 1.5f;
+                    powerup.text="Player 2 Speed Power Up";
                   }
                   break;
 
 
             case (int) InstantiatePowerups.PowerUps.massPowerup: 
-                this.GetComponent<Rigidbody>().mass += 0.6f;    
-                break;
+                  if(this.name == "_player1") {
+                  player1.GetComponent<Rigidbody>().mass += 0.6f;  
+                  powerup.text="Player 1 Mass Power Up";  
+                  } else {
+                  player1.GetComponent<Rigidbody>().mass += 0.6f;  
+                  powerup.text="Player 2 Mass Power Up";
+                  }
+                  break;
 
 
             case (int) InstantiatePowerups.PowerUps.nofallPowerup: 
              if(this.name == "_player1") {
                     player1.GetComponent<Movement>().nudgeBonusPlayer1 = 2f;
+                    powerup.text="Player 1 Force Power Up";
                   } else {
                     player1.GetComponent<Movement>().nudgeBonusPlayer2 = 2f;
+                    powerup.text="Player 2 Force Power Up";
                   }
                   break;
 
 
             case (int) InstantiatePowerups.PowerUps.sizePowerdown: 
-                 this.transform.localScale += new Vector3(-0.5f, -0.5f, -0.5f);
+            if(this.name == "_player1") {
+                    player1.transform.localScale += new Vector3(-0.5f, -0.5f, -0.5f);
+                    powerup.text="Player 1 Size Power Down";
+                  } else {
+                    player1.transform.localScale += new Vector3(-0.5f, -0.5f, -0.5f);
+                    powerup.text="Player 2 Size Power Down";
+                  }
                   break;
 
 
             case (int) InstantiatePowerups.PowerUps.speedPowerdown:
              if(this.name == "_player1") {
                     player1.GetComponent<Movement>().movementBonusPlayer1 = 0.5f;
+                    powerup.text="Player 1 Speed Power Up";
                   } else {
                     player1.GetComponent<Movement>().movementBonusPlayer1 = 0.5f;
+                    powerup.text="Player 2 Speed Power Up";
                   }
                   break;
 
 
             case (int) InstantiatePowerups.PowerUps.massPowerdown: 
-            this.GetComponent<Rigidbody>().mass -= 0.6f;    
-                  break;
+             if(this.name == "_player1") {            
+                  player1.GetComponent<Rigidbody>().mass -= 0.6f;  
+                  powerup.text="Player 1 Mass Power Down";
+                } else {
+                  player1.GetComponent<Rigidbody>().mass -= 0.6f;  
+                  powerup.text="Player 2 Mass Power Down";
+                }
+                break;
 
 
             case (int) InstantiatePowerups.PowerUps.freezePowerDown: 
             if(this.name == "_player1") {
                     player1.GetComponent<Movement>().freezePlayer1 = true;
+                    powerup.text="Player 1 Freeze";
                   } else {
                     player1.GetComponent<Movement>().freezePlayer2 = true;
+                    powerup.text="Player 2 Freeze";
                   }
                   break;
 
