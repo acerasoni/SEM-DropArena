@@ -19,6 +19,10 @@ public class ChaserState : MonoBehaviour {
     private GameObject player1, player2;
     private Rigidbody chaserBody;
 
+    /**
+     * @params
+     * @return
+     */
     void Start () {
         player1 = GameObject.Find ("_player1");
         player2 = GameObject.Find ("_player2");
@@ -35,6 +39,10 @@ public class ChaserState : MonoBehaviour {
         chaserBody = this.GetComponent<Rigidbody> ();
     }
 
+    /**
+     * @params
+     * @return
+     */
     void Update () {
         // Update chaser according to chaserState
         if (chaserState == ChaserStateEnum.chasePlayer1) {
@@ -61,6 +69,10 @@ public class ChaserState : MonoBehaviour {
         }
     }
 
+    /** 
+     * @params state The state of Chaser
+     * @return
+     */
     public void setChasedPlayer (ChaserStateEnum state) {
         if (state == ChaserStateEnum.chasePlayer1) {
             player1Light.enabled = true;
@@ -72,6 +84,10 @@ public class ChaserState : MonoBehaviour {
         this.chaserState = state;
     }
 
+    /**
+     * @params
+     * @return returns Chaser's state
+     */
     public ChaserStateEnum getChasedPlayer () {
         return this.chaserState;
     }

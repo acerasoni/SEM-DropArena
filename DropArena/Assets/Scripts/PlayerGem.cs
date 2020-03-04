@@ -10,19 +10,29 @@ public class PlayerGem : MonoBehaviour
     level lvl = new level();
     Score score = new Score();
 
-    // Start is called before the first frame update
+    /**
+     * @params
+     * @return
+     */
     void Start()
     {
     
     }
 
-    // Update is called once per frame
+    /**
+     * @params
+     * @return
+     */
     void Update()
     {
         
     }
 
-        void OnCollisionEnter(Collision collision){    	 
+    /**
+     * @params collision object
+     * @return
+     */
+    void OnCollisionEnter(Collision collision){    	 
 
             // Check for collision with gem   	
 		 if (collision.gameObject.name == "gem")
@@ -53,11 +63,19 @@ public class PlayerGem : MonoBehaviour
              }
  		    }
         }
-  	
-	public void retrieveChaser() {
+
+    /**
+     * @params
+     * @return
+     */
+    public void retrieveChaser() {
           _chaser = GameObject.Find("chaser").GetComponent<ChaserState>();
     }
 
+    /**
+     * @params collision object
+     * @return
+     */
     private void moveGem(Collision collision) {
             InstantiateGem script = GameObject.Find("gem").GetComponent<InstantiateGem>();
             script.generateNewPosition();

@@ -6,19 +6,29 @@ using UnityEngine.SceneManagement;
 public class level : MonoBehaviour
 {
 
-    // Start is called before the first frame update
+    /**
+     * @params
+     * @return
+     */
     void Start()
     {        
         
     }
 
-    // Update is called once per frame
+    /**
+     * @params
+     * @return
+     */
     void Update()
     {
 
     }
 
-   public void levelloader(){
+    /**
+     * @params
+     * @return
+     */
+    public void levelloader(){
 
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
 

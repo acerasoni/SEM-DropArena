@@ -7,20 +7,29 @@ public class Result : MonoBehaviour
 {
         private TextMesh _resultText;
         public GameObject resultObject;
-        
-    // Start is called before the first frame update
+
+    /**
+     * @params
+     * @return
+     */
     void Start()
     {
         _resultText = resultObject.GetComponent<TextMesh> ();
     }
 
-    // Update is called once per frame
+    /**
+     * @params
+     * @return
+     */
     void Update()
     {
         result();
     }
 
-        
+        /**
+     * @params
+     * @return
+     */
         public void result(){
         if (Score.player1Score > Score.player2Score)
         {

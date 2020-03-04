@@ -28,7 +28,10 @@ public class InstantiatePowerups : MonoBehaviour
     // Positive powerups
     private GameObject _powerup;
 
-    // Start is called before the first frame update
+    /**
+     * @params
+     * @return
+     */
     void Start()
     {
         _time = Time.time;
@@ -36,7 +39,10 @@ public class InstantiatePowerups : MonoBehaviour
         generatePowerup();
     }
 
-    // Update is called once per frame
+    /**
+     * @params
+     * @return
+     */
     void Update()
     {
         // Every 5.0 seconds, spawn a new powerup
@@ -47,6 +53,10 @@ public class InstantiatePowerups : MonoBehaviour
         }   
     }
 
+    /**
+     * @params
+     * @return
+     */
     private void generatePowerup() {
         // Randomly select one powerup
         _currentPowerup = Random.Range(0, 8);
@@ -79,10 +89,18 @@ public class InstantiatePowerups : MonoBehaviour
         Destroy(_powerup, _powerupSpawnDelay);
     }
 
+    /**
+     * @params
+     * @return returns Vector3 generated random position
+     */
     private Vector3 generateRandomPosition() {
          return new Vector3(Random.Range(0, 5.0f), 0.49f, Random.Range(0, 5.0f));
     }
 
+    /**
+     * @params
+     * @return returns powerUps type
+     */
     public int getPowerupType() {
         return this._currentPowerup;
     }

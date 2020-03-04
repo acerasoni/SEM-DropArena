@@ -10,8 +10,11 @@ public class Instantiate : MonoBehaviour
     private Vector3 _gemPos;
     private GameObject _chaser;
     private GameObject _gem;
-
-    // Start is called before the first frame update
+    
+    /**
+     * @params
+     * @return
+     */
     void Start()
     {       
         _chaserPos = new Vector3(4f, 0.49f, 4f);
@@ -30,7 +33,10 @@ public class Instantiate : MonoBehaviour
         GameObject.Find("_player2").GetComponent<PlayerGem>().retrieveChaser();
     }
 
-    // Update is called once per frame
+    /**
+     * @params
+     * @return
+     */
     void Update()
     {
 

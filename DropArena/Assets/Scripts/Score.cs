@@ -9,23 +9,40 @@ public class Score : MonoBehaviour
     private TextMesh _scoreText;
     public static int player1Score;
     public static int player2Score;
-    // Start is called before the first frame update
+
+
+    /**
+     * @params
+     * @return
+     */
     void Start()
     {
         _scoreText = scoreObject.GetComponent<TextMesh> ();
     }
 
 
-    // Update is called once per frame
+    /**
+     * @params
+     * @return
+     */
     void Update()
     {
         _scoreText.text = player1Score +" - " + player2Score;
     }
 
+    /**
+     * @params
+     * @return
+     */
     public void p1()
     {
         player1Score++;
     }
+
+    /**
+     * @params
+     * @return
+     */
     public void p2()
     {
         player2Score++;

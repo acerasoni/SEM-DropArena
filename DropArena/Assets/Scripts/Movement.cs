@@ -18,6 +18,10 @@ public class Movement : MonoBehaviour {
 
     private Rigidbody _playerBody;
 
+    /**
+     * @params
+     * @return
+     */
     void Start () {
 
         // Initialise movement state
@@ -28,6 +32,10 @@ public class Movement : MonoBehaviour {
 
     }
 
+    /**
+     * @params
+     * @return
+     */
     void Update () {
 
         // Move the player via the keyboard commands
@@ -39,6 +47,10 @@ public class Movement : MonoBehaviour {
 
     }
 
+    /**
+     * @params
+     * @return
+     */
     void movePlayer () {
         if (!freeze) {
             //Processing horizontal input
@@ -50,6 +62,10 @@ public class Movement : MonoBehaviour {
         }
     }
 
+    /**
+     * @params
+     * @return
+     */
     void nudgePlayer () {
         // Check if close to the edge, in which case give a little nudge inward
         if (_playerBody.position.x < 0.1f) {
@@ -69,6 +85,10 @@ public class Movement : MonoBehaviour {
         }
     }
 
+    /**
+     * @params
+     * @return
+     */
     void checkIfHasFallen () {
 
         if (this.transform.position.y < 0) {
@@ -82,14 +102,26 @@ public class Movement : MonoBehaviour {
 
     }
 
+    /**
+     * @params movementBonus, it sets movement bonus
+     * @return
+     */
     public void setMovementBonus (float movementBonus) {
         this.movementBonus = movementBonus;
     }
 
+    /**
+     * @params nudgeBonus, it sets nudge bonus
+     * @return
+     */
     public void setNudgeBonus (float nudgeBonus) {
         this.nudgeBonus = nudgeBonus;
     }
 
+    /**
+     * @params freeze, it sets freeze
+     * @return
+     */
     public void setFreeze (bool freeze) {
         this.freeze = freeze;
     }

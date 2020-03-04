@@ -7,7 +7,10 @@ public class InstantiateGem : MonoBehaviour
 
     public Material gemMaterial;
 
-    // Start is called before the first frame update
+    /**
+     * @params
+     * @return
+     */
     void Start()
     {
         generateNewPosition();
@@ -22,7 +25,10 @@ public class InstantiateGem : MonoBehaviour
         gemRigidBody.mass = 2; 
     }
 
-    // Update is called once per frame
+    /**
+     * @params
+     * @return
+     */
     void Update()
     {
           if(this.transform.position.y > 0.51f) {
@@ -32,12 +38,20 @@ public class InstantiateGem : MonoBehaviour
 
     }
 
+    /**
+     * @params
+     * @return
+     */
     public void generateNewPosition() {
         
             Vector3 position = generateRandomPosition();
             this.transform.position = position;
-    } 
+    }
 
+    /**
+     * @params
+     * @return returns whether it is in position
+     */
     private bool isNotInPosition() {
         
         // Checking if the gem is higher than 0.51 because we spawn it at exactly 0.5 - meaning something must have pushed it up (i.e. spawning on a column)
@@ -47,10 +61,15 @@ public class InstantiateGem : MonoBehaviour
         }
             else return false;
 
-    } 
+    }
 
-    // Generates random position on one of the 4 edges.
-    // The size of the base is 10, but we will set the square position to 9 to avoid collision with edge obstacles.
+
+    /**
+     * Generates random position on one of the 4 edges.
+     * The size of the base is 10, but we will set the square position to 9 to avoid collision with edge obstacles.
+     * @params
+     * @return returns Vector3 random position 
+     */
     public Vector3 generateRandomPosition() {
         Vector3 gPos;
 

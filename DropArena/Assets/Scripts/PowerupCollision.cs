@@ -14,8 +14,11 @@ public class PowerupCollision : MonoBehaviour {
   private bool _isPoweredUp;
   private AudioSource _audioSource;
 
-  // Start is called before the first frame update
-  void Start () {
+    /**
+       * @params
+       * @return
+       */
+    void Start () {
     _powerupText = powerupObject.GetComponent<TextMesh> ();
     _audioSource = this.GetComponent<AudioSource>();
 
@@ -23,8 +26,11 @@ public class PowerupCollision : MonoBehaviour {
     _isPoweredUp = false;
   }
 
-  // Update is called once per frame
-  void Update () {
+    /**
+       * @params
+       * @return
+       */
+    void Update () {
 
     // Move the powerup text alongside the player
     powerupObject.transform.position = new Vector3 (this.transform.position.x - 0.25f, this.transform.position.y + 0.5f, this.transform.position.z);
@@ -36,7 +42,11 @@ public class PowerupCollision : MonoBehaviour {
     }
   }
 
-  void OnCollisionEnter (Collision collision) {
+    /**
+     * @params collision object
+     * @return
+     */
+    void OnCollisionEnter (Collision collision) {
 
     // Check for collision with powerup   	
     if (collision.gameObject.name == "_powerup" && _isPoweredUp == false) {
@@ -98,14 +108,22 @@ public class PowerupCollision : MonoBehaviour {
 
   }
 
-  private int getPowerupType () {
+    /**
+     * @params
+     * @return returns powerUp type
+     */
+    private int getPowerupType () {
     // Retrieve script attached to player1
     GameObject player1 = GameObject.Find ("_player1");
     InstantiatePowerups instantiatePowerupScript = player1.GetComponent<InstantiatePowerups> ();
     return instantiatePowerupScript.getPowerupType ();
   }
 
-  private void resetPlayer () {
+    /**
+     * @params
+     * @return
+     */
+    private void resetPlayer () {
     // Reset the scale
     this.transform.localScale = Vector3.one;
 
