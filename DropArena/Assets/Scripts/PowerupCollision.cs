@@ -7,6 +7,7 @@ public class PowerupCollision : MonoBehaviour {
 
   public GameObject powerupObject;
 
+  // Powerup state
   private TextMesh _powerupText;
   private float _powerUpDuration;
   private int _currentPowerup;
@@ -23,7 +24,7 @@ public class PowerupCollision : MonoBehaviour {
   void Update () {
 
     // Move the powerup text alongside the player
-    powerupObject.transform.position = new Vector3 (this.transform.position.x - 0.3f, this.transform.position.y + 0.5f, this.transform.position.z);
+    powerupObject.transform.position = new Vector3 (this.transform.position.x - 0.25f, this.transform.position.y + 0.5f, this.transform.position.z);
 
     if (Time.time >= _powerUpDuration + 5.0f && _isPoweredUp) {
       _isPoweredUp = false;
@@ -42,7 +43,7 @@ public class PowerupCollision : MonoBehaviour {
 
       // Get the type of powerup
       _currentPowerup = getPowerupType ();
-      _currentPowerup = (int) InstantiatePowerups.PowerUps.nofallPowerup;
+
       // Destroy the powerup object
       Destroy (collision.gameObject);
 
@@ -74,7 +75,7 @@ public class PowerupCollision : MonoBehaviour {
           break;
 
         case (int) InstantiatePowerups.PowerUps.speedPowerdown:
-          _powerupText.text = "You're slower, tread carefully.";
+          _powerupText.text = "You're slower, be careful.";
           this.GetComponent<Movement> ().setMovementBonus (0.5f);
           break;
 
