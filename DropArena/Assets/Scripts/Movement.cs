@@ -42,11 +42,11 @@ public class Movement : MonoBehaviour {
     void movePlayer () {
         if (!freeze) {
             //Processing horizontal input
-            this.transform.position = new Vector3 (this.transform.position.x + Input.GetAxis (horizontalAxis) * 0.35f * movementBonus,
+            this.transform.position = new Vector3 (this.transform.position.x + Input.GetAxis (horizontalAxis) * 0.5f * movementBonus,
                 this.transform.position.y, this.transform.position.z);
             //Processing vertical input
             this.transform.position = new Vector3 (this.transform.position.x, this.transform.position.y,
-                this.transform.position.z + Input.GetAxis (verticalAxis) * 0.35f * movementBonus);
+                this.transform.position.z + Input.GetAxis (verticalAxis) * 0.5f * movementBonus);
         }
     }
 
