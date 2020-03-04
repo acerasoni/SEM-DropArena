@@ -2,93 +2,93 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Movement : MonoBehaviour
-{
-    //Player Objects
-     [SerializeField]
-     public GameObject player1;
-     [SerializeField]
-     public GameObject player2;
-     level lvl = new level();
-     public float movementBonusPlayer1;
-     public float movementBonusPlayer2;
+public class Movement : MonoBehaviour {
 
-     public bool freezePlayer1;
-     public bool freezePlayer2;
+    level lvl = new level ();
 
-     public float nudgeBonusPlayer1;
-     public float nudgeBonusPlayer2;
+    // Keyboard controls
+    public string horizontalAxis, verticalAxis;
 
-    // Start is called before the first frame update
-    void Start()
-    {
-        movementBonusPlayer1 = 1;
-           movementBonusPlayer2 = 1;
+    // Movement state variables
+    private float movementBonus;
+    private float nudgeBonus;
+    private bool freeze;
 
-           freezePlayer1 = false;
-           freezePlayer2 = false;
+    private Rigidbody _playerBody;
 
-           nudgeBonusPlayer1 = 0;
-           nudgeBonusPlayer2 = 0;
+    void Start () {
+
+        // Initialise movement state
+        movementBonus = 1;
+        freeze = false;
+        nudgeBonus = 0;
+        _playerBody = this.GetComponent<Rigidbody> ();
+
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        //Check if players are assigned
-         if(player1 && player1)
-         {
-             Rigidbody player1Body = player1.GetComponent<Rigidbody>();
-             Rigidbody player2Body = player2.GetComponent<Rigidbody>();
-             
-            if(!freezePlayer1) {
-             //Processing Player1 input for horizontal 
-             player1.transform.position = new Vector3(player1.transform.position.x + Input.GetAxis("HorizontalPlayer1") * movementBonusPlayer1, 
-             player1.transform.position.y, player1.transform.position.z);
-             //Processing Player1 input for vertical 
-             player1.transform.position = new Vector3(player1.transform.position.x, player1.transform.position.y, 
-             player1.transform.position.z + Input.GetAxis("VerticalPlayer1") * movementBonusPlayer1);
-            } 
-            if(!freezePlayer2) {
-             //Processing Player2 input for horizontal 
-             player2.transform.position = new Vector3(player2.transform.position.x + Input.GetAxis("HorizontalPlayer2") * movementBonusPlayer1, 
-             player2.transform.position.y, player2.transform.position.z);
-             //Processing Player2 input for vertical 
-             player2.transform.position = new Vector3(player2.transform.position.x, player2.transform.position.y, 
-             player2.transform.position.z + Input.GetAxis("VerticalPlayer2") * movementBonusPlayer1);
-            }
-        
-            nudgePlayer(player1Body, nudgeBonusPlayer1);
-            nudgePlayer(player2Body, nudgeBonusPlayer2);
-         }
+    void Update () {
 
-         if (player1.transform.position.y < 0)
-         {
-             lvl.levelloader();
-         }
+        // Move the player via the keyboard commands
+        movePlayer ();
+        // Nudge the player inward if they are close to the arena
+        nudgePlayer ();
+        // Check if the player has fallen
+        checkIfHasFallen ();
 
-        if (player2.transform.position.y < 0)
-         {
-             lvl.levelloader();
-         }
-     }
+    }
 
-     void nudgePlayer(Rigidbody playerBody, float nudgeBonus) {
-          // Check if close to the edge, in which case give a little nudge inward
-        if(playerBody.position.x < 0.1f) {
+    void movePlayer () {
+        if (!freeze) {
+            //Processing horizontal input
+            this.transform.position = new Vector3 (this.transform.position.x + Input.GetAxis (horizontalAxis) * 0.35f * movementBonus,
+                this.transform.position.y, this.transform.position.z);
+            //Processing vertical input
+            this.transform.position = new Vector3 (this.transform.position.x, this.transform.position.y,
+                this.transform.position.z + Input.GetAxis (verticalAxis) * 0.35f * movementBonus);
+        }
+    }
+
+    void nudgePlayer () {
+        // Check if close to the edge, in which case give a little nudge inward
+        if (_playerBody.position.x < 0.1f) {
             // If on the left edge
-             playerBody.AddForce(0.04f + nudgeBonus, 0, 0, ForceMode.Force);
-        } else if(playerBody.position.x > 3.9f) {
+            _playerBody.AddForce (0.04f + nudgeBonus, 0, 0, ForceMode.Force);
+        } else if (_playerBody.position.x > 3.9f) {
             // If on the right edge
-             playerBody.AddForce(-0.04f - nudgeBonus, 0, 0, ForceMode.Force);
+            _playerBody.AddForce (-0.04f - nudgeBonus, 0, 0, ForceMode.Force);
         }
 
-        if(playerBody.position.z < 0.1f) {
+        if (_playerBody.position.z < 0.1f) {
             // If on the bottom edge
-             playerBody.AddForce(0, 0, 0.04f + nudgeBonus, ForceMode.Force);
-        } else if(playerBody.position.z > 3.9f) {
+            _playerBody.AddForce (0, 0, 0.04f + nudgeBonus, ForceMode.Force);
+        } else if (_playerBody.position.z > 3.9f) {
             // If on the top edge
-            playerBody.AddForce(0, 0, -0.04f - nudgeBonus, ForceMode.Force);
+            _playerBody.AddForce (0, 0, -0.04f - nudgeBonus, ForceMode.Force);
         }
-     }
- }
+    }
+
+    void checkIfHasFallen () {
+
+        if (this.transform.position.y < 0) {
+            if (this.name == "_player1") {
+                // JOSH INCREASE SCORE FOR PLAYER 2 HERE
+            } else {
+                // JOSH INCREASE SCORE FOR PLAYER 1 HERE
+            }
+            lvl.levelloader ();
+        }
+
+    }
+
+    public void setMovementBonus (float movementBonus) {
+        this.movementBonus = movementBonus;
+    }
+
+    public void setNudgeBonus (float nudgeBonus) {
+        this.nudgeBonus = nudgeBonus;
+    }
+
+    public void setFreeze (bool freeze) {
+        this.freeze = freeze;
+    }
+}
