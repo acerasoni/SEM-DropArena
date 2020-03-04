@@ -14,6 +14,8 @@ public class Movement : MonoBehaviour {
     private float nudgeBonus;
     private bool freeze;
 
+    Score score = new Score();
+
     private Rigidbody _playerBody;
 
     void Start () {
@@ -71,9 +73,9 @@ public class Movement : MonoBehaviour {
 
         if (this.transform.position.y < 0) {
             if (this.name == "_player1") {
-                // JOSH INCREASE SCORE FOR PLAYER 2 HERE
+                score.p2();
             } else {
-                // JOSH INCREASE SCORE FOR PLAYER 1 HERE
+                score.p1();
             }
             lvl.levelloader ();
         }
