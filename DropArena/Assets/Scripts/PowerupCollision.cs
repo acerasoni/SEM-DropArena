@@ -66,7 +66,7 @@ public class PowerupCollision : MonoBehaviour {
           break;
 
         case (int) InstantiatePowerups.PowerUps.nofallPowerup:
-          _powerupText.text = "It'a hard to fall off the edge.";
+          _powerupText.text = "It's hard to fall off the edge.";
           this.GetComponent<Movement> ().setNudgeBonus (4f);
           break;
 
