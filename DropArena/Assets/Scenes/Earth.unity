@@ -265,14 +265,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 72b9015bb3e901e42b794e21d6f77569, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  player1: {fileID: 100051596}
-  player2: {fileID: 458724581}
-  movementBonusPlayer1: 0
-  movementBonusPlayer2: 0
-  freezePlayer1: 0
-  freezePlayer2: 0
-  nudgeBonusPlayer1: 0
-  nudgeBonusPlayer2: 0
+  horizontalAxis: HorizontalPlayer1
+  verticalAxis: VerticalPlayer1
 --- !u!114 &100051600
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -300,7 +294,7 @@ Rigidbody:
   m_UseGravity: 1
   m_IsKinematic: 0
   m_Interpolate: 0
-  m_Constraints: 0
+  m_Constraints: 112
   m_CollisionDetection: 0
 --- !u!135 &100051602
 SphereCollider:
@@ -589,9 +583,9 @@ GameObject:
   - component: {fileID: 458724586}
   - component: {fileID: 458724585}
   - component: {fileID: 458724584}
-  - component: {fileID: 458724583}
   - component: {fileID: 458724582}
   - component: {fileID: 458724589}
+  - component: {fileID: 458724590}
   m_Layer: 0
   m_Name: _player2
   m_TagString: Untagged
@@ -611,26 +605,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4d38274c458b3ca4990ed983f58d1d61, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &458724583
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 458724581}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 72b9015bb3e901e42b794e21d6f77569, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  player1: {fileID: 100051596}
-  player2: {fileID: 458724581}
-  movementBonusPlayer1: 0
-  movementBonusPlayer2: 0
-  freezePlayer1: 0
-  freezePlayer2: 0
-  nudgeBonusPlayer1: 0
-  nudgeBonusPlayer2: 0
 --- !u!54 &458724584
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -645,7 +619,7 @@ Rigidbody:
   m_UseGravity: 1
   m_IsKinematic: 0
   m_Interpolate: 0
-  m_Constraints: 0
+  m_Constraints: 112
   m_CollisionDetection: 0
 --- !u!135 &458724585
 SphereCollider:
@@ -733,6 +707,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3aa46e0ba55963b428a440c785770429, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &458724590
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 458724581}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 72b9015bb3e901e42b794e21d6f77569, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  horizontalAxis: HorizontalPlayer2
+  verticalAxis: VerticalPlayer2
 --- !u!1 &761309251
 GameObject:
   m_ObjectHideFlags: 0
@@ -1480,7 +1468,7 @@ Transform:
   m_LocalScale: {x: 1, y: 0.5, z: 7}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 13
+  m_RootOrder: 14
   m_LocalEulerAnglesHint: {x: 0, y: 90, z: 0}
 --- !u!1 &1859134575
 GameObject:
