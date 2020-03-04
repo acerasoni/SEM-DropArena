@@ -12,7 +12,7 @@ public enum ChaserStateEnum
 public class ChaserState : MonoBehaviour
 {
 
-    public float movementSpeed = 5f;
+    public float movementSpeed = 2.5f;
     public ChaserStateEnum chaserState;
     private GameObject player1, player2;
     private Rigidbody chaserBody;
