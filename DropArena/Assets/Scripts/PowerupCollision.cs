@@ -12,10 +12,12 @@ public class PowerupCollision : MonoBehaviour {
   private float _powerUpDuration;
   private int _currentPowerup;
   private bool _isPoweredUp;
+  private AudioSource _audioSource;
 
   // Start is called before the first frame update
   void Start () {
     _powerupText = powerupObject.GetComponent<TextMesh> ();
+    _audioSource = this.GetComponent<AudioSource>();
 
     // Start with no powerups
     _isPoweredUp = false;
@@ -39,6 +41,7 @@ public class PowerupCollision : MonoBehaviour {
     // Check for collision with powerup   	
     if (collision.gameObject.name == "_powerup" && _isPoweredUp == false) {
 
+      _audioSource.Play();           
       _powerUpDuration = Time.time;
       _isPoweredUp = true;
 
@@ -81,12 +84,12 @@ public class PowerupCollision : MonoBehaviour {
           break;
 
         case (int) InstantiatePowerups.PowerUps.massPowerdown:
-          _powerupText.text = "You're lighter. That's bad.";
+          _powerupText.text = "You're lighter, that's bad.";
           this.GetComponent<Rigidbody> ().mass -= 0.6f;
           break;
 
         case (int) InstantiatePowerups.PowerUps.freezePowerDown:
-          _powerupText.text = "You can't move for now.";
+          _powerupText.text = "You're frozen. Oh no!";
           this.GetComponent<Movement> ().setFreeze (true);
           break;
 
