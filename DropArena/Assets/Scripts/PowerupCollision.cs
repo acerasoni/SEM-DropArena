@@ -5,29 +5,35 @@ using UnityEngine.UI;
 
 public class PowerupCollision : MonoBehaviour {
 
+  public GameObject powerupObject;
+
+  // Powerup state
+  private TextMesh _powerupText;
   private float _powerUpDuration;
   private int _currentPowerup;
   private bool _isPoweredUp;
 
-  private Text powerup;
-
   // Start is called before the first frame update
   void Start () {
+    _powerupText = powerupObject.GetComponent<TextMesh> ();
     // Start with no powerups
     _isPoweredUp = false;
   }
 
   // Update is called once per frame
   void Update () {
+
+    // Move the powerup text alongside the player
+    powerupObject.transform.position = new Vector3 (this.transform.position.x - 0.25f, this.transform.position.y + 0.5f, this.transform.position.z);
+
     if (Time.time >= _powerUpDuration + 5.0f && _isPoweredUp) {
       _isPoweredUp = false;
+      _powerupText.text = "";
       resetPlayer ();
-      powerup.text = "";
     }
   }
 
   void OnCollisionEnter (Collision collision) {
-    powerup = GameObject.Find ("Text").GetComponent<Text> ();
 
     // Check for collision with powerup   	
     if (collision.gameObject.name == "_powerup" && _isPoweredUp == false) {
@@ -44,74 +50,42 @@ public class PowerupCollision : MonoBehaviour {
       switch (_currentPowerup) {
 
         case (int) InstantiatePowerups.PowerUps.sizePowerup:
-          if (this.name == "_player1") {
-            powerup.text = "Player 1 Size PowerUp";
-          } else {
-            powerup.text = "Player 2 Size PowerUp";
-          }
+          _powerupText.text = "You're a giant!";
           this.transform.localScale += new Vector3 (0.5f, 0.5f, 0.5f);
           break;
 
         case (int) InstantiatePowerups.PowerUps.speedPowerup:
-          if (this.name == "_player1") {
-            powerup.text = "Player 1 Speed Power Up";
-          } else {
-            powerup.text = "Player 2 Speed Power Up";
-          }
-          this.GetComponent<Movement> ().setMovementBonus (1.5f);
+          _powerupText.text = "You're much faster!";
+          this.GetComponent<Movement> ().setMovementBonus (2.5f);
           break;
 
         case (int) InstantiatePowerups.PowerUps.massPowerup:
-          if (this.name == "_player1") {
-            powerup.text = "Player 1 Mass Power Up";
-          } else {
-            powerup.text = "Player 2 Mass Power Up";
-          }
+          _powerupText.text = "You're much heavier!";
           this.GetComponent<Rigidbody> ().mass += 0.6f;
           break;
 
         case (int) InstantiatePowerups.PowerUps.nofallPowerup:
-          if (this.name == "_player1") {
-            powerup.text = "Player 1 Force Power Up";
-          } else {
-            powerup.text = "Player 2 Force Power Up";
-          }
-          this.GetComponent<Movement> ().setNudgeBonus (2f);
+          _powerupText.text = "You can't fall!";
+          this.GetComponent<Movement> ().setNudgeBonus (4f);
           break;
 
         case (int) InstantiatePowerups.PowerUps.sizePowerdown:
-          if (this.name == "_player1") {
-            powerup.text = "Player 1 Size Power Down";
-          } else {
-            powerup.text = "Player 2 Size Power Down";
-          }
+          _powerupText.text = "You're very tiny now.";
           this.transform.localScale += new Vector3 (-0.5f, -0.5f, -0.5f);
           break;
 
         case (int) InstantiatePowerups.PowerUps.speedPowerdown:
-          if (this.name == "_player1") {
-            powerup.text = "Player 1 Speed Power Up";
-          } else {
-            powerup.text = "Player 2 Speed Power Up";
-          }
+          _powerupText.text = "You're slower, be careful.";
           this.GetComponent<Movement> ().setMovementBonus (0.5f);
           break;
 
         case (int) InstantiatePowerups.PowerUps.massPowerdown:
-          if (this.name == "_player1") {
-            powerup.text = "Player 1 Mass Power Down";
-          } else {
-            powerup.text = "Player 2 Mass Power Down";
-          }
+          _powerupText.text = "You're lighter. That's bad.";
           this.GetComponent<Rigidbody> ().mass -= 0.6f;
           break;
 
         case (int) InstantiatePowerups.PowerUps.freezePowerDown:
-          if (this.name == "_player1") {
-            powerup.text = "Player 1 Freeze";
-          } else {
-            powerup.text = "Player 2 Freeze";
-          }
+          _powerupText.text = "You can't move for now.";
           this.GetComponent<Movement> ().setFreeze (true);
           break;
 

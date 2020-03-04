@@ -53,7 +53,7 @@ public class Movement : MonoBehaviour {
         if (_playerBody.position.x < 0.1f) {
             // If on the left edge
             _playerBody.AddForce (0.04f + nudgeBonus, 0, 0, ForceMode.Force);
-        } else if (_playerBody.position.x > 3.9f) {
+        } else if (_playerBody.position.x > 8f) {
             // If on the right edge
             _playerBody.AddForce (-0.04f - nudgeBonus, 0, 0, ForceMode.Force);
         }
@@ -61,7 +61,7 @@ public class Movement : MonoBehaviour {
         if (_playerBody.position.z < 0.1f) {
             // If on the bottom edge
             _playerBody.AddForce (0, 0, 0.04f + nudgeBonus, ForceMode.Force);
-        } else if (_playerBody.position.z > 3.9f) {
+        } else if (_playerBody.position.z > 8f) {
             // If on the top edge
             _playerBody.AddForce (0, 0, -0.04f - nudgeBonus, ForceMode.Force);
         }
