@@ -16,7 +16,7 @@ public class ChaserState : MonoBehaviour
     public ChaserStateEnum chaserState;
     private GameObject player1, player2;
     private Rigidbody chaserBody;
-    // Start is called before the first frame update
+    
     void Start()
     {
         player1 = GameObject.Find("_player1");
@@ -26,7 +26,7 @@ public class ChaserState : MonoBehaviour
         chaserBody = this.GetComponent<Rigidbody>();
     }
 
-    // Update is called once per frame
+
     void Update()
     {
         // Update chaser according to chaserState

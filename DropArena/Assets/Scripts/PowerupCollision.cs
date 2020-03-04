@@ -9,7 +9,7 @@ public class PowerupCollision : MonoBehaviour {
   private int _currentPowerup;
   private bool _isPoweredUp;
 
-  private Text powerup;
+  public TextMesh powerup;
 
   // Start is called before the first frame update
   void Start () {
@@ -19,15 +19,19 @@ public class PowerupCollision : MonoBehaviour {
 
   // Update is called once per frame
   void Update () {
+
+    // Move the powerup text alongside the player
+    Vector3 playerPosition = Camera.main.WorldToViewportPoint(this.transform.position);
+    powerup.position = new Vector3(playerPosition.x*Screen.width + xDisp, playerPosition.y*Screen.height + yDisp, 40);
+
     if (Time.time >= _powerUpDuration + 5.0f && _isPoweredUp) {
       _isPoweredUp = false;
-      resetPlayer ();
       powerup.text = "";
+      resetPlayer ();
     }
   }
 
   void OnCollisionEnter (Collision collision) {
-    powerup = GameObject.Find ("Text").GetComponent<Text> ();
 
     // Check for collision with powerup   	
     if (collision.gameObject.name == "_powerup" && _isPoweredUp == false) {
