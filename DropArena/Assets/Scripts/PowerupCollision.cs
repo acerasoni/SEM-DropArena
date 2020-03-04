@@ -16,6 +16,7 @@ public class PowerupCollision : MonoBehaviour {
   // Start is called before the first frame update
   void Start () {
     _powerupText = powerupObject.GetComponent<TextMesh> ();
+
     // Start with no powerups
     _isPoweredUp = false;
   }
@@ -65,7 +66,7 @@ public class PowerupCollision : MonoBehaviour {
           break;
 
         case (int) InstantiatePowerups.PowerUps.nofallPowerup:
-          _powerupText.text = "You can't fall!";
+          _powerupText.text = "It'a hard to fall off the edge.";
           this.GetComponent<Movement> ().setNudgeBonus (4f);
           break;
 
