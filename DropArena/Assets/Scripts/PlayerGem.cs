@@ -42,11 +42,11 @@ public class PlayerGem : MonoBehaviour
 		{
             if(this.name == "_player1" && _chaser.getChasedPlayer() == ChaserStateEnum.chasePlayer1){
                   //Application.LoadLevel("nextlevel");
-                score.p1();
+                score.p2();
                 lvl.levelloader();
              } else if(this.name == "_player2" && _chaser.getChasedPlayer() == ChaserStateEnum.chasePlayer2) {
                  //Application.LoadLevel("nextlevel");
-                score.p2();
+                score.p1();
                 lvl.levelloader();
              }
  		    }

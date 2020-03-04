@@ -22,11 +22,11 @@ public class Score : MonoBehaviour
         _scoreText.text = player1Score +" - " + player2Score;
     }
 
-        public void p1()
+    public void p1()
     {
         player1Score++;
     }
-            public void p2()
+    public void p2()
     {
         player2Score++;
     }
