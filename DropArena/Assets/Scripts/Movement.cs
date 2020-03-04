@@ -40,14 +40,22 @@ public class Movement : MonoBehaviour
          {
              Rigidbody player1Body = player1.GetComponent<Rigidbody>();
              Rigidbody player2Body = player2.GetComponent<Rigidbody>();
-               
+             
             if(!freezePlayer1) {
-                 player1Body.AddForce(Input.GetAxis("HorizontalPlayer1") * 12 * movementBonusPlayer1, 0, 
-                 Input.GetAxis("VerticalPlayer1") * 12 * movementBonusPlayer1, ForceMode.Acceleration);
+             //Processing Player1 input for horizontal 
+             player1.transform.position = new Vector3(player1.transform.position.x + Input.GetAxis("HorizontalPlayer1") * movementBonusPlayer1, 
+             player1.transform.position.y, player1.transform.position.z);
+             //Processing Player1 input for vertical 
+             player1.transform.position = new Vector3(player1.transform.position.x, player1.transform.position.y, 
+             player1.transform.position.z + Input.GetAxis("VerticalPlayer1") * movementBonusPlayer1);
             } 
             if(!freezePlayer2) {
-                 player2Body.AddForce(Input.GetAxis("HorizontalPlayer2") * 12 * movementBonusPlayer2, 0, 
-                 Input.GetAxis("VerticalPlayer2") * 12 * movementBonusPlayer2, ForceMode.Acceleration);
+             //Processing Player2 input for horizontal 
+             player2.transform.position = new Vector3(player2.transform.position.x + Input.GetAxis("HorizontalPlayer2") * movementBonusPlayer1, 
+             player2.transform.position.y, player2.transform.position.z);
+             //Processing Player2 input for vertical 
+             player2.transform.position = new Vector3(player2.transform.position.x, player2.transform.position.y, 
+             player2.transform.position.z + Input.GetAxis("VerticalPlayer2") * movementBonusPlayer1);
             }
         
             nudgePlayer(player1Body, nudgeBonusPlayer1);
