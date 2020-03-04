@@ -18,7 +18,7 @@ public class Instantiate : MonoBehaviour
 		_chaser = GameObject.CreatePrimitive(PrimitiveType.Sphere); 
         _chaser.transform.position = _chaserPos;
 		_chaser.name = "chaser";
-        _chaser.tag = "chaser";
+        _chaser.tag = "chaser";        
         _chaser.GetComponent<Renderer>().material = chaserMaterial;
         Rigidbody chaserRigidBody = _chaser.AddComponent<Rigidbody>(); // Add the rigidbody.
         _chaser.AddComponent<ChaserState>();

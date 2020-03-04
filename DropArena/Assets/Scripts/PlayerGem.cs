@@ -27,6 +27,8 @@ public class PlayerGem : MonoBehaviour
             // Check for collision with gem   	
 		 if (collision.gameObject.name == "gem")
 		{
+            GameObject.Find("GameObject").GetComponent<AudioSource>().Play();
+                        
             if(this.name == "_player1"){
                  _chaser.setChasedPlayer(ChaserStateEnum.chasePlayer2);
                  moveGem(collision);
