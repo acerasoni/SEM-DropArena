@@ -2032,7 +2032,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6303da713595844e6aefb31a4c32c66a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  chaserMaterial: {fileID: 2100000, guid: 637bad580835cab48bc55f1f2e7cdfa4, type: 2}
+  chaserMaterial: {fileID: 2100000, guid: 54617e0582e83744882ee48ff633df6f, type: 2}
 --- !u!54 &2076375389
 Rigidbody:
   m_ObjectHideFlags: 0
