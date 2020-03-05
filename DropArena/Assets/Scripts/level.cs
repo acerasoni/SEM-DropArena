@@ -20,7 +20,7 @@ public class Level : MonoBehaviour {
         int indexCounter = SceneManager.GetActiveScene ().buildIndex;
 
         //works if it is not the last scene, needs playing with
-        if (indexCounter == 9) {
+        if (indexCounter == 8) {
             UnityEditor.EditorApplication.isPlaying = false;
             Application.Quit ();
         }
