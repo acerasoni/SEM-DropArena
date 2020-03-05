@@ -32,6 +32,12 @@ public class InstantiateGem : MonoBehaviour {
         this.transform.position = position;
     }
 
+
+    /**
+     * Takes a Vector3 object and checks if it is a valid position for the Gem according to the player's positions.
+     * @params Vector3 position
+     * @return boolean = true if invalid
+     */
     private bool isNotValidPosition (Vector3 position) {
 
         // Checking if the gem is higher than 0.51 because we spawn it at exactly 0.5 - meaning something must have pushed it up (i.e. spawning on a column)
@@ -55,8 +61,11 @@ public class InstantiateGem : MonoBehaviour {
 
     }
 
-    // Generates random position on one of the 4 edges.
-    // The size of the base is 10, but we will set the square position to 9 to avoid collision with edge obstacles.
+    /**
+     * Generates random position on one of the 4 edges.
+     * The size of the base is 10, but we will set the square position to 9 to avoid collision with edge obstacles.
+     * @return the Vector3 position
+     */
     public Vector3 generateRandomPosition () {
         Vector3 gPos;
 
