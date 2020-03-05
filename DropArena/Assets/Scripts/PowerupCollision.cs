@@ -17,7 +17,7 @@ public class PowerupCollision : MonoBehaviour {
   // Start is called before the first frame update
   void Start () {
     _powerupText = powerupObject.GetComponent<TextMesh> ();
-    _audioSource = this.GetComponent<AudioSource>();
+    _audioSource = this.GetComponent<AudioSource> ();
 
     // Start with no powerups
     _isPoweredUp = false;
@@ -41,7 +41,7 @@ public class PowerupCollision : MonoBehaviour {
     // Check for collision with powerup   	
     if (collision.gameObject.name == "_powerup" && _isPoweredUp == false) {
 
-      _audioSource.Play();           
+      _audioSource.Play ();
       _powerUpDuration = Time.time;
       _isPoweredUp = true;
 

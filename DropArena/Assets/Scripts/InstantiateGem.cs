@@ -40,17 +40,17 @@ public class InstantiateGem : MonoBehaviour {
         }
 
         // Check the gem is not too close to one player, only if just spawned. Defined as farthest player not being twice as far away than closer player.
-       
-            Vector3 vectorPlayerOne = GameObject.Find ("_player1").GetComponent<Rigidbody> ().position;
-            Vector3 vectorPlayerTwo = GameObject.Find ("_player2").GetComponent<Rigidbody> ().position;
-            Vector3 vectorGem = position;
-            float distanceFromOne = Mathf.Abs (Vector3.Distance (vectorGem, vectorPlayerOne));
-            float distanceFromTwo = Mathf.Abs (Vector3.Distance (vectorGem, vectorPlayerTwo));
 
-            if (distanceFromOne > distanceFromTwo * 1.2 || distanceFromTwo > distanceFromOne * 1.2) {
-                return true;
-            }
-        
+        Vector3 vectorPlayerOne = GameObject.Find ("_player1").GetComponent<Rigidbody> ().position;
+        Vector3 vectorPlayerTwo = GameObject.Find ("_player2").GetComponent<Rigidbody> ().position;
+        Vector3 vectorGem = position;
+        float distanceFromOne = Mathf.Abs (Vector3.Distance (vectorGem, vectorPlayerOne));
+        float distanceFromTwo = Mathf.Abs (Vector3.Distance (vectorGem, vectorPlayerTwo));
+
+        if (distanceFromOne > distanceFromTwo * 1.2 || distanceFromTwo > distanceFromOne * 1.2) {
+            return true;
+        }
+
         return false;
 
     }
