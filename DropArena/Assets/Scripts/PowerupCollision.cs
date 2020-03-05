@@ -98,6 +98,9 @@ public class PowerupCollision : MonoBehaviour {
 
   }
 
+  /**
+   * @return The powerup type as enumerated in ChaserStateEnum
+   */
   private int getPowerupType () {
     // Retrieve script attached to player1
     GameObject player1 = GameObject.Find ("_player1");

@@ -76,6 +76,11 @@ public class InstantiatePowerups : MonoBehaviour {
         Destroy (_powerup, _powerupSpawnDelay);
     }
 
+
+    /**
+     * Generates a new, valid position for the powerup
+     * @return the Vector3 position
+     */
     public Vector3 generateNewPosition () {
         Vector3 position = generateRandomPosition ();
         while (isNotValidPosition (position)) {
@@ -85,6 +90,12 @@ public class InstantiatePowerups : MonoBehaviour {
         return position;
     }
 
+
+    /**
+     * Returns false if the position is not a valid powerup position according to the player's positions.
+     * @param the Vector3 position
+     * @return bool = true if invalid
+     */
     private bool isNotValidPosition (Vector3 position) {
 
         // Checking if the powerup is higher than 0.51 because we spawn it at exactly 0.5 - meaning something must have pushed it up (i.e. spawning on a column)
@@ -108,10 +119,19 @@ public class InstantiatePowerups : MonoBehaviour {
 
     }
 
+
+    /**
+     * Generates random position inside of the Arena.
+     * @return the Vector3 position
+     */
     private Vector3 generateRandomPosition () {
         return new Vector3 (Random.Range (0, 5.0f), 0.49f, Random.Range (0, 5.0f));
     }
 
+    
+    /**
+     * @return Powerup type as enumerated by ChaserStateEnum
+     */
     public int getPowerupType () {
         return this._currentPowerup;
     }
