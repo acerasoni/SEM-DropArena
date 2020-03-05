@@ -12,14 +12,14 @@ public class Movement : MonoBehaviour {
     private float _nudgeBonus;
     private bool _freeze;
 
-    private Level _lvl;
+    private LevelScript _lvl;
     private Score _score;
 
     private Rigidbody _playerBody;
 
     void Start () {
 
-        _lvl = GameObject.Find("_player1").GetComponent<Level>();
+        _lvl = GameObject.Find("_player1").GetComponent<LevelScript>();
         _score = GameObject.Find("Score").GetComponent<Score>();
         // Initialise movement state
         _movementBonus = 1;

@@ -6,12 +6,12 @@ public class PlayerGem : MonoBehaviour {
 
     private ChaserState _chaser;
 
-    Level _lvl;
+    LevelScript _lvl;
     Score _score;
 
     void Start () {
         // Fetch level and score from scene
-        _lvl = GameObject.Find ("_player1").GetComponent<Level> ();
+        _lvl = GameObject.Find ("_player1").GetComponent<LevelScript> ();
         _score = GameObject.Find ("Score").GetComponent<Score> ();
     }
 
