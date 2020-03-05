@@ -6,6 +6,9 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
+    path: Assets/Scenes/Introduction.unity
+    guid: 3d24f0e8dd841c84d9d68fe466f4ec61
+  - enabled: 1
     path: Assets/Scenes/Mercury.unity
     guid: 3efe8964f94bb184fb5e2c3bd7694abf
   - enabled: 1
