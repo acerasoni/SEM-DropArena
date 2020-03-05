@@ -14,13 +14,14 @@ public class Instantiate : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {       
-        _chaserPos = new Vector3(4f, 0.49f, 4f);
+        _chaserPos = new Vector3(4f, 2.5f, 4f);
 		_chaser = GameObject.CreatePrimitive(PrimitiveType.Sphere); 
         _chaser.transform.position = _chaserPos;
 		_chaser.name = "chaser";
         _chaser.tag = "chaser";        
         _chaser.GetComponent<Renderer>().material = chaserMaterial;
         Rigidbody chaserRigidBody = _chaser.AddComponent<Rigidbody>(); // Add the rigidbody.
+        chaserRigidBody.useGravity = false;
         _chaser.AddComponent<ChaserState>();
         chaserRigidBody.mass = 2; 
         _chaser.transform.localScale += new Vector3(-0.5f, -0.5f, -0.5f);

@@ -62,6 +62,7 @@ public class ChaserState : MonoBehaviour {
     }
 
     public void setChasedPlayer (ChaserStateEnum state) {
+        chaserBody.useGravity = false;
         if (state == ChaserStateEnum.chasePlayer1) {
             player1Light.enabled = true;
             player2Light.enabled = false;
