@@ -5,11 +5,9 @@ using UnityEngine;
 public class InstantiateGem : MonoBehaviour {
 
     public Material gemMaterial;
-    public bool justSpawned;
 
     // Start is called before the first frame update
     void Start () {
-        justSpawned = true;
         generateNewPosition ();
 
         this.name = "gem";
@@ -23,45 +21,39 @@ public class InstantiateGem : MonoBehaviour {
     }
 
     // Update is called once per frame
-    void Update () {
-        if (isNotInPosition ()) {
-            generateNewPosition ();
-        }
-
-    }
+    void Update () { }
 
     public void generateNewPosition () {
-
         Vector3 position = generateRandomPosition ();
+        while (isNotValidPosition (position)) {
+            position = generateRandomPosition ();
+        }
+
         this.transform.position = position;
     }
 
-    private bool isNotInPosition () {
+    private bool isNotValidPosition (Vector3 position) {
 
         // Checking if the gem is higher than 0.51 because we spawn it at exactly 0.5 - meaning something must have pushed it up (i.e. spawning on a column)
-        if (this.transform.position.y > 0.51f) {
+        if (position.y > 0.51f) {
             return true;
         }
 
         // Check the gem is not too close to one player, only if just spawned. Defined as farthest player not being twice as far away than closer player.
-        if (justSpawned) {
+       
             Vector3 vectorPlayerOne = GameObject.Find ("_player1").GetComponent<Rigidbody> ().position;
             Vector3 vectorPlayerTwo = GameObject.Find ("_player2").GetComponent<Rigidbody> ().position;
-            Vector3 vectorGem = this.GetComponent<Rigidbody> ().position;
-            float distanceFromOne = Mathf.Abs(Vector3.Distance (vectorGem, vectorPlayerOne));
-            float distanceFromTwo = Mathf.Abs(Vector3.Distance (vectorGem, vectorPlayerTwo));
+            Vector3 vectorGem = position;
+            float distanceFromOne = Mathf.Abs (Vector3.Distance (vectorGem, vectorPlayerOne));
+            float distanceFromTwo = Mathf.Abs (Vector3.Distance (vectorGem, vectorPlayerTwo));
 
-            if(distanceFromOne > distanceFromTwo*2 || distanceFromTwo > distanceFromOne*2) {
+            if (distanceFromOne > distanceFromTwo * 1.2 || distanceFromTwo > distanceFromOne * 1.2) {
                 return true;
             }
 
-            Debug.Log("D1: " + distanceFromOne);
-            Debug.Log("D2: " + distanceFromTwo);
-        }
-
-
-
-        justSpawned = false;
+            Debug.Log ("D1: " + distanceFromOne);
+            Debug.Log ("D2: " + distanceFromTwo);
+        
         return false;
 
     }
