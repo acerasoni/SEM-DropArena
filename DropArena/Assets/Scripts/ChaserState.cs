@@ -16,15 +16,15 @@ public class ChaserState : MonoBehaviour {
 
     public float movementSpeed = 4.5f;
     public ChaserStateEnum chaserState;
-    private GameObject player1, player2;
-    private Rigidbody chaserBody;
+    private GameObject _player1, _player2;
+    private Rigidbody _chaserBody;
 
     void Start () {
-        player1 = GameObject.Find ("_player1");
-        player2 = GameObject.Find ("_player2");
-        
-        player1Light = player1.GetComponent<Light>();
-        player2Light = player2.GetComponent<Light>();
+        _player1 = GameObject.Find ("_player1");
+        _player2 = GameObject.Find ("_player2");
+
+        player1Light = _player1.GetComponent<Light> ();
+        player2Light = _player2.GetComponent<Light> ();
         player1Light.intensity = 15f;
         player2Light.intensity = 15f;
 
@@ -32,37 +32,37 @@ public class ChaserState : MonoBehaviour {
         player2Light.enabled = false;
         chaserState = new ChaserStateEnum ();
         chaserState = ChaserStateEnum.noChase;
-        chaserBody = this.GetComponent<Rigidbody> ();
+        _chaserBody = this.GetComponent<Rigidbody> ();
     }
 
     void Update () {
         // Update chaser according to chaserState
         if (chaserState == ChaserStateEnum.chasePlayer1) {
-            chaserBody.AddForce ((player1.transform.position - this.transform.position).normalized * movementSpeed);
+            _chaserBody.AddForce ((_player1.transform.position - this.transform.position).normalized * movementSpeed);
         } else if (chaserState == ChaserStateEnum.chasePlayer2) {
-            chaserBody.AddForce ((player2.transform.position - this.transform.position).normalized * movementSpeed);
+            _chaserBody.AddForce ((_player2.transform.position - this.transform.position).normalized * movementSpeed);
         }
 
         // Check if close to the edge, in which case give a little nudge inward
-        if (chaserBody.position.x < 0.2f) {
+        if (_chaserBody.position.x < 0.2f) {
             // If on the left edge
-            chaserBody.AddForce (1f, 0, 0, ForceMode.Force);
-        } else if (chaserBody.position.x > 3.8f) {
+            _chaserBody.AddForce (1f, 0, 0, ForceMode.Force);
+        } else if (_chaserBody.position.x > 3.8f) {
             // If on the right edge
-            chaserBody.AddForce (-1f, 0, 0, ForceMode.Force);
+            _chaserBody.AddForce (-1f, 0, 0, ForceMode.Force);
         }
 
-        if (chaserBody.position.z < 0.2f) {
+        if (_chaserBody.position.z < 0.2f) {
             // If on the bottom edge
-            chaserBody.AddForce (0, 0, 1f, ForceMode.Force);
-        } else if (chaserBody.position.z > 3.8f) {
+            _chaserBody.AddForce (0, 0, 1f, ForceMode.Force);
+        } else if (_chaserBody.position.z > 3.8f) {
             // If on the top edge
-            chaserBody.AddForce (0, 0, -1f, ForceMode.Force);
+            _chaserBody.AddForce (0, 0, -1f, ForceMode.Force);
         }
     }
 
     public void setChasedPlayer (ChaserStateEnum state) {
-         chaserBody.useGravity = true; 
+        _chaserBody.useGravity = true;
         if (state == ChaserStateEnum.chasePlayer1) {
             player1Light.enabled = true;
             player2Light.enabled = false;

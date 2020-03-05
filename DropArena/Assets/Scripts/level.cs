@@ -3,32 +3,28 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class Level : MonoBehaviour
-{
+public class Level : MonoBehaviour {
 
     // Start is called before the first frame update
-    void Start()
-    {        
-        
+    void Start () {
+
     }
 
     // Update is called once per frame
-    void Update()
-    {
+    void Update () {
 
     }
 
-   public void LevelLoader(){
+    public void LevelLoader () {
 
-        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
+        SceneManager.LoadScene (SceneManager.GetActiveScene ().buildIndex + 1);
 
-        int indexCounter = SceneManager.GetActiveScene().buildIndex;
+        int indexCounter = SceneManager.GetActiveScene ().buildIndex;
 
         //works if it is not the last scene, needs playing with
-        if (indexCounter == 8) 
-        {
+        if (indexCounter == 8) {
             UnityEditor.EditorApplication.isPlaying = false;
-            Application.Quit();
+            Application.Quit ();
         }
 
     }
