@@ -14,6 +14,7 @@ public class Level : MonoBehaviour {
     }
 
     public void LevelLoader () {
+        Debug.Log("LevelLoader");
 
         SceneManager.LoadScene (SceneManager.GetActiveScene ().buildIndex + 1);
 
