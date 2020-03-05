@@ -10,7 +10,6 @@ public enum ChaserStateEnum {
 
 public class ChaserState : MonoBehaviour {
 
-    // TODO: Make these private
     public Light player2Light;
     public Light player1Light;
 
