@@ -12,7 +12,7 @@ public class PlayerGem : MonoBehaviour {
     // Start is called before the first frame update
     void Start () {
         _lvl = GameObject.Find ("_player1").GetComponent<Level> ();
-        _score = GameObject.Find ("_player1").GetComponent<Score> ();
+        _score = GameObject.Find ("Score").GetComponent<Score> ();
     }
 
     // Update is called once per frame

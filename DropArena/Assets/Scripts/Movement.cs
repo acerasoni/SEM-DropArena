@@ -20,7 +20,7 @@ public class Movement : MonoBehaviour {
     void Start () {
 
         _lvl = GameObject.Find("_player1").GetComponent<Level>();
-        _score = GameObject.Find("_player1").GetComponent<Score>();
+        _score = GameObject.Find("Score").GetComponent<Score>();
         // Initialise movement state
         _movementBonus = 1;
         _freeze = false;
