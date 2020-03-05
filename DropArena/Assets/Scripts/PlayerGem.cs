@@ -6,12 +6,13 @@ public class PlayerGem : MonoBehaviour {
 
     private ChaserState _chaser;
 
-    Level lvl = new Level ();
-    Score score = new Score ();
+    Level _lvl;
+    Score _score;
 
     // Start is called before the first frame update
     void Start () {
-
+        _lvl = GameObject.Find ("_player1").GetComponent<Level> ();
+        _score = GameObject.Find ("_player1").GetComponent<Score> ();
     }
 
     // Update is called once per frame
@@ -38,11 +39,11 @@ public class PlayerGem : MonoBehaviour {
         // Check for collision with chaser
         if (collision.gameObject.name == "chaser") {
             if (this.name == "_player1" && _chaser.getChasedPlayer () == ChaserStateEnum.chasePlayer1) {
-                score.p2 ();
-                lvl.LevelLoader ();
+                _score.p2 ();
+                _lvl.LevelLoader ();
             } else if (this.name == "_player2" && _chaser.getChasedPlayer () == ChaserStateEnum.chasePlayer2) {
-                score.p1 ();
-                lvl.LevelLoader ();
+                _score.p1 ();
+                _lvl.LevelLoader ();
             }
         }
     }

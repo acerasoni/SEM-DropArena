@@ -4,9 +4,6 @@ using UnityEngine;
 
 public class Movement : MonoBehaviour {
 
-    Level lvl = new Level ();
-    Score score = new Score ();
-
     // Keyboard controls
     public string horizontalAxis, verticalAxis;
 
@@ -15,12 +12,15 @@ public class Movement : MonoBehaviour {
     private float _nudgeBonus;
     private bool _freeze;
 
-   
+    private Level _lvl;
+    private Score _score;
 
     private Rigidbody _playerBody;
 
     void Start () {
 
+        _lvl = GameObject.Find("_player1").GetComponent<Level>();
+        _score = GameObject.Find("_player1").GetComponent<Score>();
         // Initialise movement state
         _movementBonus = 1;
         _freeze = false;
@@ -74,11 +74,11 @@ public class Movement : MonoBehaviour {
 
         if (this.transform.position.y < 0) {
             if (this.name == "_player1") {
-                score.p2 ();
+                _score.p2 ();
             } else {
-                score.p1 ();
+                _score.p1 ();
             }
-            lvl.LevelLoader ();
+            _lvl.LevelLoader ();
         }
 
     }
