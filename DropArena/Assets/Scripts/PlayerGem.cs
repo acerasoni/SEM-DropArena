@@ -2,63 +2,61 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayerGem : MonoBehaviour
-{
+public class PlayerGem : MonoBehaviour {
 
     private ChaserState _chaser;
-    private int player;
-    level lvl = new level();
 
-    // Start is called before the first frame update
-    void Start()
-    {
-    
+    Level _lvl;
+    Score _score;
+
+    void Start () {
+        // Fetch level and score from scene
+        _lvl = GameObject.Find ("_player1").GetComponent<Level> ();
+        _score = GameObject.Find ("Score").GetComponent<Score> ();
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
+    void Update () {
+
     }
 
-        void OnCollisionEnter(Collision collision){    	 
+    void OnCollisionEnter (Collision collision) {
 
-            // Check for collision with gem   	
-		 if (collision.gameObject.name == "gem")
-		{
-            if(this.name == "_player1"){
-                 _chaser.setChasedPlayer(ChaserStateEnum.chasePlayer2);
-                 moveGem();
+        // Check for collision with gem   	
+        if (collision.gameObject.name == "gem") {
+            GameObject.Find ("GameObject").GetComponent<AudioSource> ().Play ();
 
-            } else if(this.name == "_player2") {
-                _chaser.setChasedPlayer(ChaserStateEnum.chasePlayer1);
-                moveGem();
+            if (this.name == "_player1") {
+                _chaser.setChasedPlayer (ChaserStateEnum.chasePlayer2);
+                moveGem (collision);
+
+            } else if (this.name == "_player2") {
+                _chaser.setChasedPlayer (ChaserStateEnum.chasePlayer1);
+                moveGem (collision);
             }
-		}
+        }
 
         // Check for collision with chaser
-        if (collision.gameObject.name == "chaser")
-		{
-            if(this.name == "_player1" && _chaser.getChasedPlayer() == ChaserStateEnum.chasePlayer1){
-                  //Application.LoadLevel("nextlevel");
-
-                  lvl.levelloader();
-             } else if(this.name == "_player2" && _chaser.getChasedPlayer() == ChaserStateEnum.chasePlayer2) {
-                 //Application.LoadLevel("nextlevel");
-                 lvl.levelloader();
-             }
- 		    }
+        if (collision.gameObject.name == "chaser") {
+            if (this.name == "_player1" && _chaser.getChasedPlayer () == ChaserStateEnum.chasePlayer1) {
+                _score.p2 ();
+                _lvl.LevelLoader ();
+            } else if (this.name == "_player2" && _chaser.getChasedPlayer () == ChaserStateEnum.chasePlayer2) {
+                _score.p1 ();
+                _lvl.LevelLoader ();
+            }
         }
-  	
-	public void retrieveChaser() {
-          _chaser = GameObject.Find("chaser").GetComponent<ChaserState>();
     }
 
-    private void moveGem() {
-            Instantiate script = GameObject.Find("_player1").GetComponent<Instantiate>();
-            Vector3 newGemPos = script.generateRandomPosition();
+    public void retrieveChaser () {
+        _chaser = GameObject.Find ("chaser").GetComponent<ChaserState> ();
+    }
 
-            GameObject gem = GameObject.Find("gem");
-            gem.transform.position = newGemPos;
+    /**
+     * Given collision with an object, it will check if it is the gem and if so respawn it.
+     * @params Collision 
+     */
+    private void moveGem (Collision collision) {
+        InstantiateGem script = GameObject.Find ("gem").GetComponent<InstantiateGem> ();
+        script.generateNewPosition ();
     }
 }
