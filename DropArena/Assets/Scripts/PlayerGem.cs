@@ -5,7 +5,7 @@ using UnityEngine;
 public class PlayerGem : MonoBehaviour {
 
     private ChaserState _chaser;
-    private int player;
+
     Level lvl = new Level ();
     Score score = new Score ();
 
