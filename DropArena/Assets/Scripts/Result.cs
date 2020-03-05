@@ -24,11 +24,11 @@ public class Result : MonoBehaviour
         public void result(){
         if (Score.player1Score > Score.player2Score)
         {
-            _resultText.text = "Player 1 wins! \n Better luck next time Player 2";
+            _resultText.text = "Arrows player wins! \n Better luck next time WASD player.";
         }
         if (Score.player1Score < Score.player2Score)
         {
-            _resultText.text = "Player 2 wins! \n Better luck next time Player 1";
+            _resultText.text = "WASD player wins! \n Better luck next time Arrows player";
         }
         if (Score.player1Score == Score.player2Score)
         {
