@@ -20,7 +20,6 @@ public class Result : MonoBehaviour
         result();
     }
 
-        
         public void result(){
         if (Score.player1Score > Score.player2Score)
         {

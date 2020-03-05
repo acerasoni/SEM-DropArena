@@ -9,13 +9,12 @@ public class PlayerGem : MonoBehaviour {
     Level _lvl;
     Score _score;
 
-    // Start is called before the first frame update
     void Start () {
+        // Fetch level and score from scene
         _lvl = GameObject.Find ("_player1").GetComponent<Level> ();
         _score = GameObject.Find ("Score").GetComponent<Score> ();
     }
 
-    // Update is called once per frame
     void Update () {
 
     }
@@ -52,6 +51,10 @@ public class PlayerGem : MonoBehaviour {
         _chaser = GameObject.Find ("chaser").GetComponent<ChaserState> ();
     }
 
+    /**
+     * Given collision with an object, it will check if it is the gem and if so respawn it.
+     * @params Collision 
+     */
     private void moveGem (Collision collision) {
         InstantiateGem script = GameObject.Find ("gem").GetComponent<InstantiateGem> ();
         script.generateNewPosition ();
