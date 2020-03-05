@@ -4,7 +4,7 @@ using UnityEngine;
 public class CameraPosition : MonoBehaviour
 
 {
-    private float _time = 3f;
+    private float _time = 6f;
     // Start is called before the first frame update
     void Start()
     {
