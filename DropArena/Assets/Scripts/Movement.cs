@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Movement : MonoBehaviour {
 
-    level lvl = new level ();
+    Level lvl = new Level ();
 
     // Keyboard controls
     public string horizontalAxis, verticalAxis;
@@ -77,7 +77,7 @@ public class Movement : MonoBehaviour {
             } else {
                 score.p1();
             }
-            lvl.levelloader ();
+            lvl.LevelLoader ();
         }
 
     }
