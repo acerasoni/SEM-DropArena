@@ -70,13 +70,46 @@ public class InstantiatePowerups : MonoBehaviour
 
         _powerup.name = "_powerup";
         _powerup.transform.localScale += new Vector3(-0.85f, -0.85f, -0.85f);
-        _powerup.transform.position = generateRandomPosition();
+        _powerup.transform.position = generateNewPosition();
         Rigidbody powerupBody = _powerup.AddComponent<Rigidbody>(); // Add the rigidbody.
 
         powerupBody.mass = 2;
 
         // Kills the game object in 5.0 seconds after loading the object
         Destroy(_powerup, _powerupSpawnDelay);
+    }
+
+    
+    public Vector3 generateNewPosition () {
+        Vector3 position = generateRandomPosition ();
+        while (isNotValidPosition (position)) {
+            position = generateRandomPosition ();
+        }
+
+        return position;
+    }
+
+    private bool isNotValidPosition (Vector3 position) {
+
+        // Checking if the powerup is higher than 0.51 because we spawn it at exactly 0.5 - meaning something must have pushed it up (i.e. spawning on a column)
+        if (position.y > 0.51f) {
+            return true;
+        }
+
+        // Check the powerup is not too close to one player, only if just spawned. Defined as being at least 1 unit away.
+       
+            Vector3 vectorPlayerOne = GameObject.Find ("_player1").GetComponent<Rigidbody> ().position;
+            Vector3 vectorPlayerTwo = GameObject.Find ("_player2").GetComponent<Rigidbody> ().position;
+            Vector3 vectorGem = position;
+            float distanceFromOne = Mathf.Abs (Vector3.Distance (vectorGem, vectorPlayerOne));
+            float distanceFromTwo = Mathf.Abs (Vector3.Distance (vectorGem, vectorPlayerTwo));
+
+        if(distanceFromOne < 1 || distanceFromTwo < 1) {
+                return true;
+        }
+        
+        return false;
+
     }
 
     private Vector3 generateRandomPosition() {

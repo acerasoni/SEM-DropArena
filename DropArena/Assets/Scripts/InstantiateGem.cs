@@ -50,9 +50,6 @@ public class InstantiateGem : MonoBehaviour {
             if (distanceFromOne > distanceFromTwo * 1.2 || distanceFromTwo > distanceFromOne * 1.2) {
                 return true;
             }
-
-            Debug.Log ("D1: " + distanceFromOne);
-            Debug.Log ("D2: " + distanceFromTwo);
         
         return false;
 
