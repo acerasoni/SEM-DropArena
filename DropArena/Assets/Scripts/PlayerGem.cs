@@ -60,6 +60,7 @@ public class PlayerGem : MonoBehaviour
 
     private void moveGem(Collision collision) {
             InstantiateGem script = GameObject.Find("gem").GetComponent<InstantiateGem>();
+            script.justSpawned = true;
             script.generateNewPosition();
     }
 }
